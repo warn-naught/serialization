@@ -1,0 +1,211 @@
+/*+-------------------------------------------------------------------------+
+  | hdf5_archive: a boost::serialization archive using HDF5 format          |
+  | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
+  +-------------------------------------------------------------------------+*/
+
+#ifndef HDF5_IPRIMITIVE_HPP
+#define HDF5_IPRIMITIVE_HPP
+
+#include "archive/detail/hdf5_file.hpp"
+#include "archive/detail/hdf5_common_archive.hpp"
+
+namespace archive {
+namespace detail {
+
+class hdf5_datatype;
+
+/*! \brief encapsulate reading from HDF5 file to input archive
+ *
+ * Longer description
+ *
+ */
+
+class hdf5_iprimitive
+        :
+        public hdf5_common_archive
+{
+protected:
+
+    void read_hdf5_dataset
+    (
+        bool* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        char* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        unsigned char* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        signed char* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        wchar_t* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        int* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        unsigned int* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        short* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        unsigned short* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        long* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        unsigned long* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        long long* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        unsigned long long* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        float* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        double* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        long double* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        std::string* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        std::wstring* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    void read_hdf5_dataset
+    (
+        boost::serialization::collection_size_type* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    // Read value of given attribute from an HDF5 group.
+    void read_hdf5_group_annotation
+    (
+        std::string const& name,
+        std::string const& attribute,
+        unsigned int& value
+    );
+    void read_hdf5_group_annotation
+    (
+        std::string const& name,
+        std::string const& attribute,
+        std::string& value
+    );
+
+    // Load block of raw bytes.
+    void read_hdf5_binary_dataset
+    (
+        void* t,
+        std::size_t data_count,
+        std::size_t object_number
+    );
+
+    // Close the HDF5 file. May throw!
+    void close();
+
+    hdf5_iprimitive
+    (
+        std::string const& hdf5_filename,
+        bool ignore_header
+    );
+
+private:
+    const hdf5_file file_;
+
+    void init(bool ignore_header);
+
+    void read_dataset_basic
+    (
+        void* ptr,
+        std::size_t data_count,
+        hdf5_datatype const& datatype,
+        std::size_t object_number
+    );
+};
+
+} } // end namespace archive::detail
+
+#endif // HDF5_IPRIMITIVE_HPP
+
+

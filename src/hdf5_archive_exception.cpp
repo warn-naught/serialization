@@ -1,0 +1,194 @@
+/*+-------------------------------------------------------------------------+
+  | hdf5_archive: a boost::serialization archive using HDF5 format          |
+  | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
+  +-------------------------------------------------------------------------+*/
+
+#include "archive/hdf5_archive_exception.hpp"
+
+namespace archive {
+
+hdf5_archive_exception::hdf5_archive_exception
+(
+    exception_code c,
+    const char * e1,
+    const char * e2
+)
+    :
+    archive_exception
+    (
+        boost::archive::archive_exception::other_exception,
+        e1,
+        e2
+    )
+{
+    switch(c){
+    case hdf5_archive_identifier_access_error:
+        m_msg = "could not determine if identifier was valid";
+        break;
+    case hdf5_archive_file_create_error:
+        m_msg = "error while creating HDF5 file";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_file_access_error:
+        m_msg = "error while accessing HDF5 file";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\". File may have been closed already.";
+        }
+        break;
+    case hdf5_archive_file_close_error:
+        m_msg = "error while closing HDF5 file";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_bad_path_error:
+        m_msg = "error while following path";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_dataspace_create_error:
+        m_msg = "error while creating HDF5 dataspace";
+        break;
+    case hdf5_archive_dataspace_access_error:
+        m_msg = "error while accessing HDF5 dataspace";
+        break;
+    case hdf5_archive_dataspace_close_error:
+        m_msg = "error while closing HDF5 dataspace";
+        break;
+    case hdf5_archive_dataset_create_error:
+        m_msg = "error while creating HDF5 dataset";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_dataset_access_error:
+        m_msg = "error while accessing HDF5 dataset";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_dataset_write_error:
+        m_msg = "error while writing to HDF5 dataset";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_dataset_read_error:
+        m_msg = "error while reading from HDF5 dataset";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_dataset_close_error:
+        m_msg = "error while closing HDF5 dataset";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_attribute_create_error:
+        m_msg = "error while creating HDF5 attribute";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_attribute_close_error:
+        m_msg = "error while closing HDF5 attribute";
+        break;
+    case hdf5_archive_attribute_access_error:
+        m_msg = "error while accessing HDF5 attribute";
+        break;
+    case hdf5_archive_attribute_read_error:
+        m_msg = "error while reading HDF5 attribute";
+        break;
+    case hdf5_archive_attribute_write_error:
+        m_msg = "error while writing HDF5 attribute";
+        break;
+    case hdf5_archive_datatype_create_error:
+        m_msg = "error while creating HDF5 datatype";
+        break;
+    case hdf5_archive_datatype_access_error:
+        m_msg = "error while opening HDF5 datatype";
+        break;
+    case hdf5_archive_datatype_set_size_error:
+        m_msg = "error while setting HDF5 datatype size";
+        break;
+    case hdf5_archive_datatype_set_charset_error:
+        m_msg = "error while setting HDF5 datatype character set";
+        break;
+    case hdf5_archive_datatype_close_error:
+        m_msg = "error while closing HDF5 datatype";
+        break;
+    case hdf5_archive_group_create_error:
+        m_msg = "error while creating HDF5 group";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_group_access_error:
+        m_msg = "error while accessing HDF5 group";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_group_close_error:
+        m_msg = "error while closing HDF5 group";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_link_create_error:
+        m_msg = "error while creating HDF5 link";
+        if(NULL != e1){
+            m_msg += e1;
+        }
+        break;
+    case hdf5_archive_link_access_error:
+        m_msg = "error while accessing HDF5 link";
+        if(NULL != e1){
+            m_msg += " \"";
+            m_msg += e1;
+            m_msg += "\"";
+        }
+        break;
+    case hdf5_archive_annotation_create_error:
+        m_msg = "error while creating HDF5 annotation";
+        break;
+    case hdf5_archive_annotation_access_error:
+        m_msg = "error while accessing HDF5 annotation";
+        break;
+    case hdf5_archive_annotation_close_error:
+        m_msg = "error while closing HDF5 annotation";
+        break;
+    }
+}
+
+} // end namespace archive

@@ -80,6 +80,19 @@ SOURCES =
     xml_iarchive
     xml_oarchive
     xml_archive_exception
+    hdf5_annotation
+    hdf5_dataset
+    hdf5_file
+    hdf5_iprimitive
+    hdf5_oprimitive
+    hdf5_archive_exception
+    hdf5_dataspace
+    hdf5_group
+    hdf5_oarchive
+    hdf5_common_archive
+    hdf5_datatype
+    hdf5_iarchive
+    hdf5_object
     shared_ptr_helper
 ;
     
@@ -95,10 +108,15 @@ WSOURCES =
     codecvt_null
 ;
 
+lib hdf5
+    :
+    : <name>hdf5 
+      <search>/opt/software/lib
+    ;
 
 lib boost_serialization 
     : $(SOURCES).cpp
-    : 
+    : <include>/usr/local/include/hdf5
     <toolset>msvc:<cxxflags>/Gy
     #<toolset>gcc:<cxxflags>"-fvisibility=hidden"
     <link>shared:<define>BOOST_SERIALIZATION_DYN_LINK=1
