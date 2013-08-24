@@ -14,8 +14,9 @@
 #include <boost/serialization/nvp.hpp>
 #include <boost/serialization/string.hpp>
 #include <boost/archive/detail/register_archive.hpp>
-#include "archive/detail/hdf5_oprimitive.hpp"
+#include <boost/archive/detail/hdf5_oprimitive.hpp>
 
+namespace boost {
 namespace archive {
 
 /*! \brief HDF5 output archive for Boost.Serialization
@@ -201,11 +202,11 @@ public:
 
 typedef hdf5_oarchive naked_hdf5_oarchive;
 
-} // end namespace archive
+} } // end namespace boost::archive
 
 // required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(::archive::hdf5_oarchive)
+BOOST_SERIALIZATION_REGISTER_ARCHIVE(::boost::archive::hdf5_oarchive)
 // make array optimization possible
-BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(::archive::hdf5_oarchive)
+BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(::boost::archive::hdf5_oarchive)
 
 #endif // HDF5_OARCHIVE_HPP

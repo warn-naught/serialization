@@ -6,9 +6,10 @@
 #ifndef BASIC_HDF5_OPRIMITIVE_HPP
 #define BASIC_HDF5_OPRIMITIVE_HPP
 
-#include "archive/detail/hdf5_file.hpp"
-#include "archive/detail/hdf5_common_archive.hpp"
+#include <boost/archive/detail/hdf5_file.hpp>
+#include <boost/archive/detail/hdf5_common_archive.hpp>
 
+namespace boost {
 namespace archive {
 namespace detail {
 
@@ -219,7 +220,7 @@ private:
 };
 
 
-} } // end namespace archive::detail
+} } } // end namespace boost::archive::detail
 
 
 #endif // BASIC_HDF5_OPRIMITIVE_HPP

@@ -4,8 +4,9 @@
   +-------------------------------------------------------------------------+*/
 
 #include <cstring> // for memcpy
-#include "archive/hdf5_iarchive.hpp"
+#include <boost/archive/hdf5_iarchive.hpp>
 
+namespace boost {
 namespace archive {
 
 template<class Archive>
@@ -147,4 +148,4 @@ hdf5_iarchive_impl<Archive>::hdf5_iarchive_impl
     object_count_()
 {}
 
-} // end namespace archive
+} } // end namespace boost::archive

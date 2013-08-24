@@ -4,8 +4,9 @@
   +-------------------------------------------------------------------------+*/
 
 #include <sstream>
-#include "archive/detail/hdf5_common_archive.hpp"
+#include <boost/archive/detail/hdf5_common_archive.hpp>
 
+namespace boost {
 namespace archive {
 namespace detail {
 
@@ -30,4 +31,4 @@ hdf5_common_archive::create_tracked_objects_path(unsigned int count)
     return ss.str();
 }
 
-} } // end namespace archive::detail
+} } } // end namespace boost::archive::detail

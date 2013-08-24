@@ -7,11 +7,12 @@
 #include <H5Dpublic.h>
 #include <H5Apublic.h>
 #include <boost/serialization/throw_exception.hpp>
-#include "archive/hdf5_archive_exception.hpp"
-#include "archive/detail/hdf5_dataspace.hpp"
-#include "archive/detail/hdf5_dataset.hpp"
-#include "archive/detail/hdf5_annotation.hpp"
+#include <boost/archive/hdf5_archive_exception.hpp>
+#include <boost/archive/detail/hdf5_dataspace.hpp>
+#include <boost/archive/detail/hdf5_dataset.hpp>
+#include <boost/archive/detail/hdf5_annotation.hpp>
 
+namespace boost {
 namespace archive {
 namespace detail {
 
@@ -91,5 +92,5 @@ void hdf5_dataspace::close_impl()
     }
 }
 
-} } // end namespace archive::detail
+} } } // end namespace boost::archive::detail
 

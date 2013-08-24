@@ -7,8 +7,9 @@
 #define HDF5_ANNOTATION_HPP
 
 #include <string>
-#include "archive/detail/hdf5_object.hpp"
+#include <boost/archive/detail/hdf5_object.hpp>
 
+namespace boost {
 namespace archive {
 namespace detail {
 
@@ -71,7 +72,7 @@ private:
 
 };
 
-} } // end namespace archive::detail
+} } } // end namespace boost::archive::detail
 
 #endif // HDF5_ANNOTATION_HPP
 

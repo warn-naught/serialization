@@ -3,12 +3,13 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
-#include <boost/serialization/throw_exception.hpp>
 #include <H5Fpublic.h>
 #include <H5Lpublic.h>
-#include "archive/hdf5_archive_exception.hpp"
-#include "archive/detail/hdf5_file.hpp"
+#include <boost/serialization/throw_exception.hpp>
+#include <boost/archive/hdf5_archive_exception.hpp>
+#include <boost/archive/detail/hdf5_file.hpp>
 
+namespace boost {
 namespace archive {
 namespace detail {
 
@@ -137,4 +138,4 @@ void hdf5_file::close_impl()
 }
 
 
-} } // end namespace archive::detail
+} } } // end namespace boost::archive::detail

@@ -8,14 +8,11 @@
 
 #include <string>
 
+namespace boost {
 namespace archive {
 namespace detail {
 
-/*! \brief code common to both input and output HDF5 archive types
- *
- * Longer description
- *
- */
+//! code common to both input and output HDF5 archive types
 
 class hdf5_common_archive
 {
@@ -39,7 +36,7 @@ private:
     
 };
 
-} } // end namespace archive::detail
+} } } // end namespace boost::archive::detail
 
 #endif // HDF5_COMMON_ARCHIVE_HPP
 

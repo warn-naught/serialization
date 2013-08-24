@@ -9,13 +9,14 @@
 #include <boost/locale/encoding.hpp>
 #include <boost/archive/basic_archive.hpp>
 #include <boost/serialization/collection_size_type.hpp>
-#include "archive/detail/hdf5_group.hpp"
-#include "archive/detail/hdf5_dataset.hpp"
-#include "archive/detail/hdf5_datatype.hpp"
-#include "archive/detail/hdf5_dataspace.hpp"
-#include "archive/detail/hdf5_oprimitive.hpp"
-#include "archive/detail/hdf5_annotation.hpp"
+#include <boost/archive/detail/hdf5_group.hpp>
+#include <boost/archive/detail/hdf5_dataset.hpp>
+#include <boost/archive/detail/hdf5_datatype.hpp>
+#include <boost/archive/detail/hdf5_dataspace.hpp>
+#include <boost/archive/detail/hdf5_oprimitive.hpp>
+#include <boost/archive/detail/hdf5_annotation.hpp>
 
+namespace boost {
 namespace archive {
 namespace detail {
 
@@ -438,4 +439,4 @@ hdf5_oprimitive::hdf5_oprimitive
 }
 
 
-} } // end namespace archive::detail
+} } } // end namespace boost::archive::detail

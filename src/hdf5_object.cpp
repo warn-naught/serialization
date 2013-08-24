@@ -5,9 +5,10 @@
 
 #include <boost/detail/no_exceptions_support.hpp>
 #include <boost/serialization/throw_exception.hpp>
-#include "archive/hdf5_archive_exception.hpp"
-#include "archive/detail/hdf5_object.hpp"
+#include <boost/archive/hdf5_archive_exception.hpp>
+#include <boost/archive/detail/hdf5_object.hpp>
 
+namespace boost {
 namespace archive {
 namespace detail {
 
@@ -57,4 +58,4 @@ bool hdf5_object::is_valid() const
     }
 }
 
-} } // end namespace archive::detail
+} } } // end namespace boost::archive::detail

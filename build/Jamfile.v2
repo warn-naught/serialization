@@ -111,7 +111,7 @@ WSOURCES =
 lib hdf5
     :
     : <name>hdf5 
-      <search>/opt/software/lib
+      <search>/usr/local/lib/hdf5
     ;
 
 lib boost_serialization 
@@ -124,7 +124,7 @@ lib boost_serialization
 
 lib boost_wserialization 
     : $(WSOURCES).cpp boost_serialization 
-    :     
+    : <include>/usr/local/include/hdf5
     <toolset>msvc:<cxxflags>/Gy 
     #<toolset>gcc:<cxxflags>"-fvisibility=hidden"
     <link>shared:<define>BOOST_SERIALIZATION_DYN_LINK=1

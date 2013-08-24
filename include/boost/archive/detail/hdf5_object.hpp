@@ -9,6 +9,7 @@
 #include <boost/noncopyable.hpp>
 #include <H5Ipublic.h>
 
+namespace boost {
 namespace archive {
 namespace detail {
 
@@ -66,6 +67,6 @@ private:
     virtual void close_impl() = 0;
 };
 
-} } // end namespace archive::detail
+} } } // end namespace boost::archive::detail
 
 #endif // HDF5_OBJECT_HPP

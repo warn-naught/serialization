@@ -8,6 +8,7 @@
 
 #include <boost/archive/archive_exception.hpp>
 
+namespace boost {
 namespace archive {
 
 // exceptions thrown by hdf5 archives
@@ -59,6 +60,6 @@ public:
     );
 };
 
-} // end namespace archive
+} } // end namespace boost::archive
 
 #endif // HDF5_ARCHIVE_EXCEPTION_HPP

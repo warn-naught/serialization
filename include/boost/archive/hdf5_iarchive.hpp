@@ -11,8 +11,9 @@
 #include <boost/serialization/collection_size_type.hpp>
 #include <boost/serialization/item_version_type.hpp>
 #include <boost/archive/detail/register_archive.hpp>
-#include "archive/detail/hdf5_iprimitive.hpp"
+#include <boost/archive/detail/hdf5_iprimitive.hpp>
 
+namespace boost {
 namespace archive {
 
 /*! \brief HDF5 input archive for Boost.Serialization
@@ -187,7 +188,7 @@ public:
     {}
 };
 
-} // end namespace archive
+} } // end namespace boost::archive
 
 // note special treatment of shared_ptr. This type needs a special
 // structure associated with every archive.  We created a "mix-in"
@@ -195,6 +196,7 @@ public:
 // special esteem in the boost library - we included it here by default.
 #include <boost/archive/shared_ptr_helper.hpp>
 
+namespace boost {
 namespace archive {
 
 class hdf5_iarchive :
@@ -211,12 +213,12 @@ public:
     {}
 };
 
-} // end namespace archive
+} } // end namespace boost::archive
 
 // required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(::archive::hdf5_iarchive)
+BOOST_SERIALIZATION_REGISTER_ARCHIVE(::boost::archive::hdf5_iarchive)
 // make array optimization possible
-BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(::archive::hdf5_iarchive)
+BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(::boost::archive::hdf5_iarchive)
 
 #endif // HDF5_IARCHIVE_HPP
 

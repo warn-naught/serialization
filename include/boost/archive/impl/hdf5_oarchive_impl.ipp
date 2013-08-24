@@ -4,8 +4,9 @@
   +-------------------------------------------------------------------------+*/
 
 #include <sstream>
-#include "archive/hdf5_oarchive.hpp"
+#include <boost/archive/hdf5_oarchive.hpp>
 
+namespace boost {
 namespace archive {
 
 template<class Archive>
@@ -281,4 +282,4 @@ void hdf5_oarchive_impl<Archive>::end_hdf5_group()
     group_stack_.pop_back();
 }
 
-} // end namespace archive
+} } // end namespace boost::archive

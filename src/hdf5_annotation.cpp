@@ -6,12 +6,13 @@
 #include <H5Apublic.h>
 #include <H5Spublic.h>
 #include <boost/serialization/throw_exception.hpp>
-#include "archive/hdf5_archive_exception.hpp"
-#include "archive/detail/hdf5_annotatable_object.hpp"
-#include "archive/detail/hdf5_dataspace.hpp"
-#include "archive/detail/hdf5_datatype.hpp"
-#include "archive/detail/hdf5_annotation.hpp"
+#include <boost/archive/hdf5_archive_exception.hpp>
+#include <boost/archive/detail/hdf5_annotatable_object.hpp>
+#include <boost/archive/detail/hdf5_dataspace.hpp>
+#include <boost/archive/detail/hdf5_datatype.hpp>
+#include <boost/archive/detail/hdf5_annotation.hpp>
 
+namespace boost {
 namespace archive {
 namespace detail {
 
@@ -136,6 +137,6 @@ void hdf5_annotation::close_impl()
     }
 }
 
-} } // end namespace archive::detail
+} } } // end namespace boost::archive::detail
 
 
