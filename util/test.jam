@@ -21,6 +21,7 @@ if ! $(BOOST_ARCHIVE_LIST) {
         "binary_archive.hpp" 
         "xml_archive.hpp" 
         "xml_warchive.hpp" 
+        "hdf5_archive.hpp" 
     ;
     # enable the tests which don't depend on a particular archive
     BOOST_SERIALIZATION_TEST = true ;

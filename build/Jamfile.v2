@@ -115,7 +115,7 @@ lib hdf5
     ;
 
 lib boost_serialization 
-    : $(SOURCES).cpp
+    : $(SOURCES).cpp hdf5
     : <include>/usr/local/include/hdf5
     <toolset>msvc:<cxxflags>/Gy
     #<toolset>gcc:<cxxflags>"-fvisibility=hidden"
