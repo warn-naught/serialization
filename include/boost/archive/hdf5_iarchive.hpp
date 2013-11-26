@@ -3,8 +3,8 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
-#ifndef HDF5_IARCHIVE_HPP
-#define HDF5_IARCHIVE_HPP
+#ifndef BOOST_ARCHIVE_HDF5_IARCHIVE_HPP
+#define BOOST_ARCHIVE_HDF5_IARCHIVE_HPP
 
 #include <cstddef> // size_t
 #include <boost/archive/detail/common_iarchive.hpp>
@@ -28,8 +28,8 @@ class hdf5_iarchive_impl
         public boost::archive::detail::common_iarchive<Archive>,
         public detail::hdf5_iprimitive
 {
-    friend class boost::archive::detail::interface_iarchive<Archive>;
-    friend class boost::archive::load_access;
+    friend class detail::interface_iarchive<Archive>;
+    friend class load_access;
 
 public:
     void load_binary(void* address, std::size_t count)
@@ -44,9 +44,9 @@ public:
     };
 
     template<class ValueType>
-    void load_array(boost::serialization::array<ValueType>& array, unsigned int /*version*/)
+    void load_array(boost::serialization::array<ValueType>& a, unsigned int /*version*/)
     {
-        read_hdf5_primitive_array(array.address(), array.count());
+        read_hdf5_primitive_array(a.address(), a.count());
     }
 
 protected:
@@ -89,12 +89,10 @@ protected:
     void load_override(boost::archive::class_name_type& t, int);
     void load_override(boost::archive::tracking_type& t, int);
 
-    // fallback: give up, call user-defined function for loading.
-    template<class T> void load(T& t) 
-    {
-        // If your code fails to compile here, then you may need to provide
-        // an overload for loading an object of type T from the HDF5 archive.
-        load_user(t);
+    // main template for serilization of primitive types
+    template<class T>
+    void load(T & t){
+        load_binary(& t, sizeof(T));
     }
 
     // load routines for everything we can directly map to an HDF5 type.
@@ -220,6 +218,6 @@ BOOST_SERIALIZATION_REGISTER_ARCHIVE(::boost::archive::hdf5_iarchive)
 // make array optimization possible
 BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(::boost::archive::hdf5_iarchive)
 
-#endif // HDF5_IARCHIVE_HPP
+#endif // BOOST_ARCHIVE_HDF5_IARCHIVE_HPP
 
 

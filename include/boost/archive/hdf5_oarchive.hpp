@@ -3,8 +3,8 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
-#ifndef HDF5_OARCHIVE_HPP
-#define HDF5_OARCHIVE_HPP
+#ifndef BOOST_ARCHIVE_HDF5_OARCHIVE_HPP
+#define BOOST_ARCHIVE_HDF5_OARCHIVE_HPP
 
 #include <cstddef> // size_t
 #include <deque>
@@ -31,8 +31,8 @@ class hdf5_oarchive_impl
         public boost::archive::detail::common_oarchive<Archive>,
         public detail::hdf5_oprimitive
 {
-    friend class boost::archive::detail::interface_oarchive<Archive>;
-    friend class boost::archive::save_access;
+    friend class detail::interface_oarchive<Archive>;
+    friend class save_access;
 
 public:
     enum hdf5_archive_flags {
@@ -51,9 +51,9 @@ public:
     };
 
     template<class ValueType>
-    void save_array(boost::serialization::array<ValueType> array, unsigned int /*version*/)
+    void save_array(boost::serialization::array<ValueType> const& a, unsigned int /*version*/)
     {
-        write_hdf5_primitive_array(array.address(), array.count());
+        write_hdf5_primitive_array(a.address(), a.count());
     }
 
 protected:
@@ -97,12 +97,11 @@ protected:
     void save_override(boost::archive::class_name_type const& t, int);
     void save_override(boost::archive::tracking_type const& t, int);
 
-    // fallback: give up, call user-defined function for saving.
-    template<class T> void save(T const& t) 
+    // default saving of primitives.
+    template<class T>
+    void save(const T & t)
     {
-        // If your code fails to compile here, then you may need to provide
-        // an overload for saving an object of type T to the HDF5 archive.
-        save_user(t);
+        save_binary(& t, sizeof(T));
     }
 
     // save routines for everything we can directly map to an HDF5 type.
@@ -209,4 +208,4 @@ BOOST_SERIALIZATION_REGISTER_ARCHIVE(::boost::archive::hdf5_oarchive)
 // make array optimization possible
 BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(::boost::archive::hdf5_oarchive)
 
-#endif // HDF5_OARCHIVE_HPP
+#endif // BOOST_ARCHIVE_HDF5_OARCHIVE_HPP

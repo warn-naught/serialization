@@ -5,8 +5,8 @@
 
 #include <sstream>
 #include <cstring>
+#include <vector>
 #include <boost/static_assert.hpp>
-#include <boost/locale/encoding.hpp>
 #include <boost/archive/basic_archive.hpp>
 #include <boost/serialization/collection_size_type.hpp>
 #include <boost/archive/detail/hdf5_group.hpp>
@@ -338,23 +338,10 @@ void hdf5_oprimitive::write_hdf5_dataset
 )
 {
     BOOST_ASSERT(data_count == 1);
-    std::string narrow_utf8_string = 
-      boost::locale::conv::utf_to_utf<char>(*t, boost::locale::conv::stop);
-    char const* c_string = narrow_utf8_string.c_str();
-
-    hdf5_datatype string_type(H5T_STRING);
-    string_type.set_encoding(H5T_CSET_UTF8);
-
-    if(use_variable_length_strings_ || narrow_utf8_string.empty()) {
-        string_type.resize(H5T_VARIABLE);
-        write_dataset_basic(&c_string, data_count, string_type, object_number);
-    }
-    else {
-        string_type.resize(narrow_utf8_string.size());
-        write_dataset_basic(c_string, data_count, string_type, object_number);
-    }
-
-    string_type.close();
+    // If you can think of a better way to store wchar_t/wstring objects in HDF5, be my guest...
+    std::size_t size = t->size() * sizeof(wchar_t);
+    void const* buffer = t->data();
+    write_hdf5_binary_dataset(buffer, size, object_number);
 }
 
 

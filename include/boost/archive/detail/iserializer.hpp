@@ -658,7 +658,7 @@ struct load_array_type {
                     boost::archive::archive_exception::array_size_too_short
                 )
             );
-        ar >> serialization::make_array(static_cast<value_type*>(&t[0]),count);
+        ar >> boost::serialization::make_array(static_cast<value_type*>(&t[0]),count);
     }
 };
 

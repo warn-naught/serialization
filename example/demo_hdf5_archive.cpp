@@ -15,8 +15,8 @@
 #include <string>
 
 #include <boost/archive/tmpdir.hpp>
-#include "archive/hdf5_oarchive.hpp"
-#include "archive/hdf5_iarchive.hpp"
+#include <boost/archive/hdf5_oarchive.hpp>
+#include <boost/archive/hdf5_iarchive.hpp>
 
 #include <boost/serialization/base_object.hpp>
 #include <boost/serialization/utility.hpp>
@@ -259,6 +259,7 @@ private:
         ar & BOOST_SERIALIZATION_NVP(schedule);
     }
 public:
+
     void append(const std::string &_d, int _h, int _m, bus_route *_br)
     {
         schedule.insert(schedule.end(), std::make_pair(trip_info(_h, _m, _d), _br));
@@ -282,9 +283,9 @@ std::ostream & operator<<(std::ostream &os, const bus_schedule &bs)
 
 void save_schedule(const bus_schedule &s, const char * filename){
     // make an archive
-    archive::hdf5_oarchive oa(
+    boost::archive::hdf5_oarchive oa(
         filename, 
-	archive::hdf5_oarchive::use_variable_length_strings
+	boost::archive::hdf5_oarchive::use_variable_length_strings
     );
     oa << BOOST_SERIALIZATION_NVP(s);
 }
@@ -292,7 +293,7 @@ void save_schedule(const bus_schedule &s, const char * filename){
 void restore_schedule(bus_schedule &s, const char * filename)
 {
     // open the archive
-    archive::hdf5_iarchive ia(filename);
+    boost::archive::hdf5_iarchive ia(filename);
 
     // restore the schedule from the archive
     ia >> BOOST_SERIALIZATION_NVP(s);

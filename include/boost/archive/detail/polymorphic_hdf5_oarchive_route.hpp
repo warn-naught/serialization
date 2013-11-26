@@ -3,11 +3,11 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
-#ifndef POLYMORPHIC_HDF5_OARCHIVE_ROUTE_HPP
-#define POLYMORPHIC_HDF5_OARCHIVE_ROUTE_HPP
+#ifndef BOOST_ARCHIVE_DETAIL_POLYMORPHIC_HDF5_OARCHIVE_ROUTE_HPP
+#define BOOST_ARCHIVE_DETAIL_POLYMORPHIC_HDF5_OARCHIVE_ROUTE_HPP
 
 // MS compatible compilers support #pragma once
-#if defined(_MSC_VER) && (_MSC_VER >= 1020)
+#if defined(_MSC_VER)
 # pragma once
 #endif
 
@@ -26,7 +26,11 @@ namespace std{
 #include <boost/archive/polymorphic_oarchive.hpp>
 #include <boost/archive/detail/abi_prefix.hpp> // must be the last header
 
+namespace boost {
 namespace archive {
+namespace serialization {
+    class extended_type_info;
+} // namespace serialization
 namespace detail{
 
 class BOOST_ARCHIVE_DECL(BOOST_PP_EMPTY()) basic_oserializer;
@@ -38,8 +42,8 @@ class BOOST_ARCHIVE_DECL(BOOST_PP_EMPTY()) basic_pointer_oserializer;
 #endif
 
 template<class ArchiveImplementation>
-class polymorphic_oarchive_route :
-    public boost::archive::polymorphic_oarchive,
+class polymorphic_hdf5_oarchive_route :
+    public polymorphic_oarchive,
     // note: gcc dynamic cross cast fails if the the derivation below is
     // not public.  I think this is a mistake.
     public /*protected*/ ArchiveImplementation
@@ -175,17 +179,18 @@ public:
         return ArchiveImplementation::register_type(t);
     }
     // hdf5 archives take a string as constructor argument
-    polymorphic_oarchive_route(
+    polymorphic_hdf5_oarchive_route(
         std::string const& hdf5_filename,
         unsigned int flags = 0
     ) :
         ArchiveImplementation(hdf5_filename, flags)
     {}
-    virtual ~polymorphic_oarchive_route(){};
+    virtual ~polymorphic_hdf5_oarchive_route(){};
 };
 
 } // namespace detail
 } // namespace archive
+} // namespace boost
 
 #ifdef BOOST_MSVC
 #pragma warning(pop)
@@ -193,4 +198,4 @@ public:
 
 #include <boost/archive/detail/abi_suffix.hpp> // pops abi_suffix.hpp pragmas
 
-#endif // POLYMORPHIC_HDF5_OARCHIVE_ROUTE_HPP
+#endif // BOOST_ARCHIVE_DETAIL_POLYMORPHIC_HDF5_OARCHIVE_ROUTE_HPP

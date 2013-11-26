@@ -5,7 +5,6 @@
 
 #include <vector>
 #include <boost/static_assert.hpp>
-#include <boost/locale/encoding.hpp>
 #include <boost/archive/basic_archive.hpp>
 #include <boost/serialization/collection_size_type.hpp>
 #include <boost/serialization/throw_exception.hpp>
@@ -344,31 +343,15 @@ void hdf5_iprimitive::read_hdf5_dataset
     hdf5_dataset dataset(file_, path);
     hdf5_datatype datatype(dataset);
 
-    std::string narrow_utf8_string;
+    // If you can think of a better way to store wchar_t/wstring objects in HDF5, be my guest...
+    size_t size = datatype.get_size();
+    std::size_t string_size = size / sizeof(wchar_t);
+    std::vector<wchar_t> buffer(string_size);
+    dataset.read(datatype, &buffer[0]);
 
-    if(datatype.is_variable_length_string()) {
-        char* buffer;
-        hdf5_dataspace dataspace(dataset);
-        dataset.read(datatype, &buffer);
-        narrow_utf8_string = buffer;
-        *t = boost::locale::conv::utf_to_utf<wchar_t>(
-	    narrow_utf8_string,
-	    boost::locale::conv::stop
-	);
-        datatype.reclaim_buffer(dataspace, &buffer);
-        dataspace.close();
-    }
-    else {
-        size_t size = datatype.get_size();
-        std::vector<char> buffer(size);
-        dataset.read(datatype, &buffer[0]);
-        narrow_utf8_string.resize(size);
-        narrow_utf8_string.replace(0, size, &buffer[0], size);
-        *t = boost::locale::conv::utf_to_utf<wchar_t>(
-	    narrow_utf8_string,
-	    boost::locale::conv::stop
-        );
-    }
+    t->resize(string_size);
+    for(size_t i = 0; i < string_size; i++)
+        (*t)[i] = buffer[i];
 
     datatype.close();
     dataset.close();

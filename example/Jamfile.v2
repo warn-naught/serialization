@@ -53,5 +53,6 @@ test-suite "demo-suite" :
     [ demo_bsl_run demo_xml ]
     [ demo_bsl_run demo_xml_save ]
     [ demo_bsl_run demo_xml_load : : <dependency>demo_xml_save ]
+    [ demo_bsl_run demo_hdf5_archive ]
 ;
 
