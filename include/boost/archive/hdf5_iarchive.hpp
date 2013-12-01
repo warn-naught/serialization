@@ -16,12 +16,6 @@
 namespace boost {
 namespace archive {
 
-/*! \brief HDF5 input archive for Boost.Serialization
- *
- * Longer description
- *
- */
-
 template<class Archive>
 class hdf5_iarchive_impl
         :
@@ -89,7 +83,7 @@ protected:
     void load_override(boost::archive::class_name_type& t, int);
     void load_override(boost::archive::tracking_type& t, int);
 
-    // main template for serilization of primitive types
+    // main template for serialization of primitive types
     template<class T>
     void load(T & t){
         load_binary(& t, sizeof(T));

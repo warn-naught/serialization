@@ -3,6 +3,7 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
+#define BOOST_ARCHIVE_SOURCE
 #include <boost/archive/hdf5_oarchive.hpp>
 #include <boost/archive/detail/archive_serializer_map.hpp>
 
@@ -13,7 +14,7 @@
 namespace boost {
 namespace archive {
 
-template class detail::archive_serializer_map< ::boost::archive::hdf5_oarchive>;
+template class detail::archive_serializer_map<hdf5_oarchive>;
 
 // explicit instantiation of the implementation:
 template class hdf5_oarchive_impl<hdf5_oarchive> ;

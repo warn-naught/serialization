@@ -30,10 +30,7 @@ protected:
     std::string const create_object_data_path(std::size_t count);
 
     // create a path to given group in the tracked objects list.
-    std::string const create_tracked_objects_path(unsigned int count);
-
-private:
-    
+    std::string const create_tracked_objects_path(unsigned int count);    
 };
 
 } } } // end namespace boost::archive::detail

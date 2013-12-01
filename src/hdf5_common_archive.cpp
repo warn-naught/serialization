@@ -4,6 +4,7 @@
   +-------------------------------------------------------------------------+*/
 
 #include <sstream>
+#define BOOST_ARCHIVE_SOURCE
 #include <boost/archive/detail/hdf5_common_archive.hpp>
 
 namespace boost {

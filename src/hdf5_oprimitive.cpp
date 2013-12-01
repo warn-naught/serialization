@@ -6,9 +6,11 @@
 #include <sstream>
 #include <cstring>
 #include <vector>
+#define BOOST_ARCHIVE_SOURCE
 #include <boost/static_assert.hpp>
 #include <boost/archive/basic_archive.hpp>
 #include <boost/serialization/collection_size_type.hpp>
+#include <boost/archive/detail/hdf5_file.hpp>
 #include <boost/archive/detail/hdf5_group.hpp>
 #include <boost/archive/detail/hdf5_dataset.hpp>
 #include <boost/archive/detail/hdf5_datatype.hpp>
@@ -53,7 +55,7 @@ void hdf5_oprimitive::write_hdf5_group_annotation
     std::string const& value
 )
 {
-    hdf5_group group(file_, name);
+    hdf5_group group(*file_, name);
     hdf5_datatype datatype(H5T_STRING);
     if(use_variable_length_strings_)
         datatype.resize(H5T_VARIABLE);
@@ -83,7 +85,7 @@ void hdf5_oprimitive::write_hdf5_group_annotation
     unsigned int const value
 )
 {
-    hdf5_group group(file_, name);
+    hdf5_group group(*file_, name);
     hdf5_datatype datatype(H5T_NATIVE_UINT);
     hdf5_dataspace dataspace(1);
     hdf5_annotation group_annotation(group, attribute, datatype, dataspace);
@@ -112,7 +114,7 @@ void hdf5_oprimitive::write_dataset_basic
     // create a new dataset at given path.
     std::string path = create_object_data_path(object_number);
 
-    hdf5_dataset dataset(file_, path, datatype, dataspace);
+    hdf5_dataset dataset(*file_, path, datatype, dataspace);
 
     // store the data.
     dataset.write(datatype, ptr);
@@ -381,7 +383,7 @@ void hdf5_oprimitive::write_hdf5_binary_dataset(
 
 void hdf5_oprimitive::create_hdf5_group(std::string const& name)
 {
-    hdf5_group group(file_, name);
+    hdf5_group group(*file_, name);
     group.close();
 }
 
@@ -392,7 +394,7 @@ void hdf5_oprimitive::create_hdf5_hard_link
     std::string const& target_path
 )
 {
-    file_.create_hdf5_hard_link(source_path, target_path);
+    file_->create_hdf5_hard_link(source_path, target_path);
 }
 
 
@@ -402,13 +404,13 @@ void hdf5_oprimitive::create_hdf5_soft_link
     std::string const& target_path
 )
 {
-    file_.create_hdf5_soft_link(source_path, target_path);
+    file_->create_hdf5_soft_link(source_path, target_path);
 }
 
 
 void hdf5_oprimitive::close()
 {
-    file_.close();
+    file_->close();
 }
 
 
@@ -419,11 +421,14 @@ hdf5_oprimitive::hdf5_oprimitive
     bool use_variable_length_strings
 )
     :
-      file_(hdf5_filename, hdf5_file::READ_WRITE),
+      file_(new hdf5_file(hdf5_filename, hdf5_file::READ_WRITE)),
       use_variable_length_strings_(use_variable_length_strings)
 {
     init(no_header);
 }
 
+
+hdf5_oprimitive::~hdf5_oprimitive()
+{}
 
 } } } // end namespace boost::archive::detail

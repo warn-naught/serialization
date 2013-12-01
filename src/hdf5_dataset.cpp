@@ -3,10 +3,11 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
-#include <boost/serialization/throw_exception.hpp>
 #include <H5Dpublic.h>
 #include <H5Spublic.h>
 #include <H5Lpublic.h>
+#define BOOST_ARCHIVE_SOURCE
+#include <boost/serialization/throw_exception.hpp>
 #include <boost/archive/hdf5_archive_exception.hpp>
 #include <boost/archive/detail/hdf5_file.hpp>
 #include <boost/archive/detail/hdf5_datatype.hpp>

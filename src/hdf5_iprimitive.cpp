@@ -4,11 +4,13 @@
   +-------------------------------------------------------------------------+*/
 
 #include <vector>
+#define BOOST_ARCHIVE_SOURCE
 #include <boost/static_assert.hpp>
 #include <boost/archive/basic_archive.hpp>
 #include <boost/serialization/collection_size_type.hpp>
 #include <boost/serialization/throw_exception.hpp>
 #include <boost/archive/archive_exception.hpp>
+#include <boost/archive/detail/hdf5_file.hpp>
 #include <boost/archive/detail/hdf5_group.hpp>
 #include <boost/archive/detail/hdf5_annotation.hpp>
 #include <boost/archive/detail/hdf5_dataset.hpp>
@@ -59,7 +61,7 @@ void hdf5_iprimitive::read_hdf5_group_annotation
     std::string &value
 )
 {
-    const hdf5_group group(file_, name);
+    const hdf5_group group(*file_, name);
     const hdf5_annotation group_annotation(group, attribute);
     hdf5_datatype datatype(group_annotation);
 
@@ -91,7 +93,7 @@ void hdf5_iprimitive::read_hdf5_group_annotation
     unsigned int &value
 )
 {
-    const hdf5_group group(file_, name);
+    const hdf5_group group(*file_, name);
     hdf5_annotation group_annotation(group, attribute);
     hdf5_datatype datatype(group_annotation);
     group_annotation.read(datatype, &value);
@@ -107,7 +109,7 @@ void hdf5_iprimitive::read_dataset_basic
 )
 {
     std::string path = create_object_data_path(object_number);
-    hdf5_dataset dataset(file_, path);
+    hdf5_dataset dataset(*file_, path);
 
     dataset.read(datatype, ptr);
 
@@ -307,7 +309,7 @@ void hdf5_iprimitive::read_hdf5_dataset
 {
     BOOST_ASSERT(data_count == 1);
     std::string path = create_object_data_path(object_number);
-    hdf5_dataset dataset(file_, path);
+    hdf5_dataset dataset(*file_, path);
     hdf5_datatype datatype(dataset);
 
     if(datatype.is_variable_length_string()) {
@@ -340,19 +342,20 @@ void hdf5_iprimitive::read_hdf5_dataset
 {
     BOOST_ASSERT(data_count == 1);
     std::string path = create_object_data_path(object_number);
-    hdf5_dataset dataset(file_, path);
+    hdf5_dataset dataset(*file_, path);
     hdf5_datatype datatype(dataset);
 
     // If you can think of a better way to store wchar_t/wstring objects in HDF5, be my guest...
     size_t size = datatype.get_size();
     std::size_t string_size = size / sizeof(wchar_t);
-    std::vector<wchar_t> buffer(string_size);
-    dataset.read(datatype, &buffer[0]);
+	if(string_size) {
+		std::vector<wchar_t> buffer(string_size);
+		dataset.read(datatype, &buffer[0]);
 
-    t->resize(string_size);
-    for(size_t i = 0; i < string_size; i++)
-        (*t)[i] = buffer[i];
-
+		t->resize(string_size);
+		for(size_t i = 0; i < string_size; i++)
+			(*t)[i] = buffer[i];
+	}
     datatype.close();
     dataset.close();
 }
@@ -397,11 +400,12 @@ hdf5_iprimitive::hdf5_iprimitive
     bool ignore_header
 )
     :
-      file_(hdf5_filename, hdf5_file::READ_ONLY)
+      file_(new hdf5_file(hdf5_filename, hdf5_file::READ_ONLY))
 {
     init(ignore_header);
 }
 
-
+hdf5_iprimitive::~hdf5_iprimitive()
+{}
 
 } } } // end namespace boost::archive::detail

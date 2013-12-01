@@ -112,12 +112,15 @@ lib hdf5
     :
     : <name>hdf5 
       <search>/usr/local/lib/hdf5
+	  <search>C:/development/hdf5-1.8.12/1.8.12/bin
+	  <search>C:/development/hdf5-1.8.12/1.8.12/lib
     ;
 
 lib boost_serialization 
     : $(SOURCES).cpp hdf5
     : <include>/usr/local/include/hdf5
-    <toolset>msvc:<cxxflags>/Gy
+	  <include>C:/development/hdf5-1.8.12/1.8.12/include
+      <toolset>msvc:<cxxflags>/Gy
     #<toolset>gcc:<cxxflags>"-fvisibility=hidden"
     <link>shared:<define>BOOST_SERIALIZATION_DYN_LINK=1
     ;
@@ -125,6 +128,7 @@ lib boost_serialization
 lib boost_wserialization 
     : $(WSOURCES).cpp boost_serialization 
     : <include>/usr/local/include/hdf5
+      <include>C:/development/hdf5-1.8.12/1.8.12/include
     <toolset>msvc:<cxxflags>/Gy 
     #<toolset>gcc:<cxxflags>"-fvisibility=hidden"
     <link>shared:<define>BOOST_SERIALIZATION_DYN_LINK=1

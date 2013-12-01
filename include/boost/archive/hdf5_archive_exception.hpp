@@ -3,8 +3,13 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
-#ifndef HDF5_ARCHIVE_EXCEPTION_HPP
-#define HDF5_ARCHIVE_EXCEPTION_HPP
+#ifndef BOOST_ARCHIVE_HDF5_ARCHIVE_EXCEPTION_HPP
+#define BOOST_ARCHIVE_HDF5_ARCHIVE_EXCEPTION_HPP
+
+// MS compatible compilers support #pragma once
+#if defined(_MSC_VER)
+# pragma once
+#endif
 
 #include <boost/archive/archive_exception.hpp>
 
@@ -62,4 +67,4 @@ public:
 
 } } // end namespace boost::archive
 
-#endif // HDF5_ARCHIVE_EXCEPTION_HPP
+#endif // BOOST_ARCHIVE_HDF5_ARCHIVE_EXCEPTION_HPP

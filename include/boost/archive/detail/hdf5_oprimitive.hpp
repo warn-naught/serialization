@@ -6,13 +6,14 @@
 #ifndef BASIC_HDF5_OPRIMITIVE_HPP
 #define BASIC_HDF5_OPRIMITIVE_HPP
 
-#include <boost/archive/detail/hdf5_file.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <boost/archive/detail/hdf5_common_archive.hpp>
 
 namespace boost {
 namespace archive {
 namespace detail {
 
+class hdf5_file;
 class hdf5_datatype;
 
 class hdf5_oprimitive
@@ -204,8 +205,11 @@ protected:
         bool use_variable_length_strings
     );
 
+	~hdf5_oprimitive();
+
 private:
-    hdf5_file file_;
+	// hide HDF5 implementation details
+    scoped_ptr<hdf5_file> file_;
     bool const use_variable_length_strings_;
 
     void init(bool suppress_header);

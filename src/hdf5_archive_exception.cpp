@@ -3,6 +3,7 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
+#define BOOST_ARCHIVE_SOURCE
 #include <boost/archive/hdf5_archive_exception.hpp>
 
 namespace boost {

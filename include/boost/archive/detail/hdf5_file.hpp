@@ -3,8 +3,8 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
-#ifndef HDF5_FILE_HPP
-#define HDF5_FILE_HPP
+#ifndef BOOST_ARCHIVE_DETAIL_HDF5_FILE_HPP
+#define BOOST_ARCHIVE_DETAIL_HDF5_FILE_HPP
 
 #include <string>
 #include <boost/archive/detail/hdf5_annotatable_object.hpp>
@@ -73,6 +73,6 @@ private:
 
 } } } // end namespace boost::archive::detail
 
-#endif // HDF5_FILE_HPP
+#endif // BOOST_ARCHIVE_DETAIL_HDF5_FILE_HPP
 
 

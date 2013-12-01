@@ -5,6 +5,7 @@
 
 #include <H5Fpublic.h>
 #include <H5Lpublic.h>
+#define BOOST_ARCHIVE_SOURCE
 #include <boost/serialization/throw_exception.hpp>
 #include <boost/archive/hdf5_archive_exception.hpp>
 #include <boost/archive/detail/hdf5_file.hpp>

@@ -3,11 +3,11 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
-#ifndef HDF5_OBJECT_HPP
-#define HDF5_OBJECT_HPP
+#ifndef BOOST_ARCHIVE_DETAIL_HDF5_OBJECT_HPP
+#define BOOST_ARCHIVE_DETAIL_HDF5_OBJECT_HPP
 
-#include <boost/noncopyable.hpp>
 #include <H5Ipublic.h>
+#include <boost/noncopyable.hpp>
 
 namespace boost {
 namespace archive {
@@ -69,4 +69,4 @@ private:
 
 } } } // end namespace boost::archive::detail
 
-#endif // HDF5_OBJECT_HPP
+#endif // BOOST_ARCHIVE_DETAIL_HDF5_OBJECT_HPP

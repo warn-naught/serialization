@@ -3,16 +3,17 @@
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
   +-------------------------------------------------------------------------+*/
 
-#ifndef HDF5_IPRIMITIVE_HPP
-#define HDF5_IPRIMITIVE_HPP
+#ifndef BOOST_ARCHIVE_DETAIL_HDF5_IPRIMITIVE_HPP
+#define BOOST_ARCHIVE_DETAIL_HDF5_IPRIMITIVE_HPP
 
-#include <boost/archive/detail/hdf5_file.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <boost/archive/detail/hdf5_common_archive.hpp>
 
 namespace boost {
 namespace archive {
 namespace detail {
 
+class hdf5_file;
 class hdf5_datatype;
 
 /*! \brief encapsulate reading from HDF5 file to input archive
@@ -191,9 +192,11 @@ protected:
         bool ignore_header
     );
 
+	~hdf5_iprimitive();
+	
 private:
-    const hdf5_file file_;
-
+	// hide HDF5 implementation details
+    scoped_ptr<const hdf5_file> file_;
     void init(bool ignore_header);
 
     void read_dataset_basic
@@ -207,6 +210,6 @@ private:
 
 } } } // end namespace boost::archive::detail
 
-#endif // HDF5_IPRIMITIVE_HPP
+#endif // BOOST_ARCHIVE_DETAIL_HDF5_IPRIMITIVE_HPP
 
 

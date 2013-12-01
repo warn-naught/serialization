@@ -19,12 +19,6 @@
 namespace boost {
 namespace archive {
 
-/*! \brief HDF5 output archive for Boost.Serialization
- *
- * Longer description
- *
- */
-
 template<class Archive>
 class hdf5_oarchive_impl
         :

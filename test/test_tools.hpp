@@ -225,6 +225,7 @@ main(int argc, char * argv[]){
 #include "binary_archive.hpp"
 #include "xml_archive.hpp"
 #include "xml_warchive.hpp"
+#include "hdf5_archive.hpp"
 */
 
 /////////////////////////////////////////////
