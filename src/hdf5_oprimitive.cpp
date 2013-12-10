@@ -177,18 +177,6 @@ void hdf5_oprimitive::write_hdf5_dataset
 
 void hdf5_oprimitive::write_hdf5_dataset
 (
-    wchar_t const* t,
-    std::size_t data_count,
-    std::size_t object_number
-)
-{
-    std::wstring wstring(t, data_count);
-    write_hdf5_dataset(&wstring, 1, object_number); 
-}
-
-
-void hdf5_oprimitive::write_hdf5_dataset
-(
     int const* t,
     std::size_t data_count,
     std::size_t object_number
@@ -334,21 +322,6 @@ void hdf5_oprimitive::write_hdf5_dataset
 
 void hdf5_oprimitive::write_hdf5_dataset
 (
-    const std::wstring *t,
-    std::size_t data_count,
-    std::size_t object_number
-)
-{
-    BOOST_ASSERT(data_count == 1);
-    // If you can think of a better way to store wchar_t/wstring objects in HDF5, be my guest...
-    std::size_t size = t->size() * sizeof(wchar_t);
-    void const* buffer = t->data();
-    write_hdf5_binary_dataset(buffer, size, object_number);
-}
-
-
-void hdf5_oprimitive::write_hdf5_dataset
-(
     boost::serialization::collection_size_type const* t,
     std::size_t data_count,
     std::size_t object_number
@@ -361,6 +334,33 @@ void hdf5_oprimitive::write_hdf5_dataset
     BOOST_ASSERT(boost::serialization::collection_size_type(i) == *t);
 
     write_dataset_basic(&i, data_count, hdf5_datatype(H5T_NATIVE_HSIZE), object_number);
+}
+
+
+void hdf5_oprimitive::write_hdf5_dataset
+(
+    wchar_t const* t,
+    std::size_t data_count,
+    std::size_t object_number
+)
+{
+    std::wstring wstring(t, data_count);
+    write_hdf5_dataset(&wstring, 1, object_number); 
+}
+
+
+void hdf5_oprimitive::write_hdf5_dataset
+(
+    const std::wstring *t,
+    std::size_t data_count,
+    std::size_t object_number
+)
+{
+    BOOST_ASSERT(data_count == 1);
+    // If you can think of a better way to store wchar_t/wstring objects in HDF5, be my guest...
+    std::size_t size = (t->size() + 1) * sizeof(wchar_t);
+    void const* buffer = t->c_str();
+    write_hdf5_binary_dataset(buffer, size, object_number);
 }
 
 

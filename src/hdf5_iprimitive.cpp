@@ -167,20 +167,6 @@ void hdf5_iprimitive::read_hdf5_dataset
 
 void hdf5_iprimitive::read_hdf5_dataset
 (
-    wchar_t* t,
-    std::size_t data_count,
-    std::size_t object_number
-)
-{
-    std::wstring wstring;
-    read_hdf5_dataset(&wstring, 1, object_number); 
-    for(std::size_t i = 0; i < data_count; i++)
-      t[i] = wstring[i];
-}
-
-
-void hdf5_iprimitive::read_hdf5_dataset
-(
     int* t,
     std::size_t data_count,
     std::size_t object_number
@@ -335,6 +321,35 @@ void hdf5_iprimitive::read_hdf5_dataset
 
 void hdf5_iprimitive::read_hdf5_dataset
 (
+    boost::serialization::collection_size_type* t,
+    std::size_t data_count,
+    std::size_t object_number
+)
+{
+    BOOST_STATIC_ASSERT(sizeof(size_t) <= sizeof(hsize_t));
+
+    hsize_t i;
+    read_dataset_basic(&i, data_count, hdf5_datatype(H5T_NATIVE_HSIZE), object_number);
+    *t = boost::serialization::collection_size_type(i);
+}
+
+
+void hdf5_iprimitive::read_hdf5_dataset
+(
+    wchar_t* t,
+    std::size_t data_count,
+    std::size_t object_number
+)
+{
+    std::wstring wstring;
+    read_hdf5_dataset(&wstring, 1, object_number); 
+    for(std::size_t i = 0; i < data_count; i++)
+      t[i] = wstring[i];
+}
+
+
+void hdf5_iprimitive::read_hdf5_dataset
+(
     std::wstring* t,
     std::size_t data_count,
     std::size_t object_number
@@ -347,32 +362,20 @@ void hdf5_iprimitive::read_hdf5_dataset
 
     // If you can think of a better way to store wchar_t/wstring objects in HDF5, be my guest...
     size_t size = datatype.get_size();
-    std::size_t string_size = size / sizeof(wchar_t);
+
+	BOOST_ASSERT(size >= sizeof(wchar_t));
+    std::size_t string_size = size / sizeof(wchar_t) - 1;
+
+	t->resize(string_size);
 	if(string_size) {
-		std::vector<wchar_t> buffer(string_size);
+		std::vector<wchar_t> buffer(string_size + 1);
 		dataset.read(datatype, &buffer[0]);
 
-		t->resize(string_size);
-		for(size_t i = 0; i < string_size; i++)
-			(*t)[i] = buffer[i];
+        t->replace(0, string_size, &buffer[0], string_size);
 	}
+
     datatype.close();
     dataset.close();
-}
-
-
-void hdf5_iprimitive::read_hdf5_dataset
-(
-    boost::serialization::collection_size_type* t,
-    std::size_t data_count,
-    std::size_t object_number
-)
-{
-    BOOST_STATIC_ASSERT(sizeof(size_t) <= sizeof(hsize_t));
-
-    hsize_t i;
-    read_dataset_basic(&i, data_count, hdf5_datatype(H5T_NATIVE_HSIZE), object_number);
-    *t = boost::serialization::collection_size_type(i);
 }
 
 

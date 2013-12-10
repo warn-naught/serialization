@@ -181,13 +181,20 @@ public:
     register_type(T * t = NULL){
         return ArchiveImplementation::register_type(t);
     }
-    // all current archives take a stream as constructor argument
+    // all current archives except hdf5 take a stream as constructor argument
     template <class _Elem, class _Tr>
     polymorphic_oarchive_route(
         std::basic_ostream<_Elem, _Tr> & os,
         unsigned int flags = 0
     ) :
         ArchiveImplementation(os, flags)
+    {}
+    // hdf5 archives take a string as constructor argument
+    polymorphic_oarchive_route(
+        std::string const& hdf5_filename,
+        unsigned int flags = 0
+    ) :
+        ArchiveImplementation(hdf5_filename, flags)
     {}
     virtual ~polymorphic_oarchive_route(){};
 };
