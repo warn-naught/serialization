@@ -81,14 +81,22 @@ protected:
     }
 
     // specific saves for attributes
-    void save_override(boost::archive::object_id_type const& t, int);
-    void save_override(boost::archive::object_reference_type const& t, int);
-    void save_override(boost::archive::version_type const& t, int);
-    void save_override(boost::archive::class_id_type const& t, int);
-    void save_override(boost::archive::class_id_optional_type const& t, int);
-    void save_override(boost::archive::class_id_reference_type const& t, int);
-    void save_override(boost::archive::class_name_type const& t, int);
-    void save_override(boost::archive::tracking_type const& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    save_override(boost::archive::object_id_type const& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    save_override(boost::archive::object_reference_type const& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	save_override(boost::archive::version_type const& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    save_override(boost::archive::class_id_type const& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    save_override(boost::archive::class_id_optional_type const& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    save_override(boost::archive::class_id_reference_type const& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    save_override(boost::archive::class_name_type const& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    save_override(boost::archive::tracking_type const& t, int);
 
     // default saving of primitives.
     template<class T>
@@ -124,6 +132,7 @@ protected:
         save(static_cast<unsigned int const>(t));
     }
 
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
     hdf5_oarchive_impl(std::string const& hdf5_filename, unsigned int flags);
 
 private:
@@ -133,15 +142,20 @@ private:
     typedef std::deque<std::string> group_stack_t;
     group_stack_t group_stack_;
 
-    std::string create_tree_object_path() const;
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(std::string) 
+	create_tree_object_path() const;
 
-    void link_data_object();
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	link_data_object();
 
-    void link_tracked_object(unsigned int object);
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	link_tracked_object(unsigned int object);
 
-    void link_tracked_object_reference(unsigned int object_reference);
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	link_tracked_object_reference(unsigned int object_reference);
 
-    void link_data_and_update_object_count();
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	link_data_and_update_object_count();
 
     template<class T>
     void write_hdf5_primitive(T const& t)
@@ -161,20 +175,25 @@ private:
         link_data_and_update_object_count();
     }
 
-    void write_hdf5_binary(void const* address, std::size_t count);
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	write_hdf5_binary(void const* address, std::size_t count);
 
-    void create_hdf5_group();
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	create_hdf5_group();
 
     template <typename ValueType>
-    void write_attribute_on_current_hdf5_group
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	write_attribute_on_current_hdf5_group
     (
         std::string const& attribute,
         ValueType const& value
     );
 
-    void start_hdf5_group(char const* name);
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	start_hdf5_group(char const* name);
 
-    void end_hdf5_group();
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    end_hdf5_group();
 };
 
 }} // end namespace boost::archive

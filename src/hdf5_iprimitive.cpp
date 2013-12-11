@@ -54,7 +54,8 @@ void hdf5_iprimitive::init(bool ignore_header)
 }
 
 
-void hdf5_iprimitive::read_hdf5_group_annotation
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_group_annotation
 (
     const std::string &name,
     const std::string &attribute,
@@ -86,7 +87,8 @@ void hdf5_iprimitive::read_hdf5_group_annotation
 }
 
 
-void hdf5_iprimitive::read_hdf5_group_annotation
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_group_annotation
 (
     const std::string &name,
     const std::string &attribute,
@@ -117,7 +119,8 @@ void hdf5_iprimitive::read_dataset_basic
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     bool* t,
     std::size_t data_count,
@@ -132,7 +135,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     char* t,
     std::size_t data_count,
@@ -143,7 +147,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     unsigned char* t,
     std::size_t data_count,
@@ -154,7 +159,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     signed char* t,
     std::size_t data_count,
@@ -165,7 +171,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     int* t,
     std::size_t data_count,
@@ -176,7 +183,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     unsigned int* t,
     std::size_t data_count,
@@ -187,7 +195,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     short* t,
     std::size_t data_count,
@@ -198,7 +207,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     unsigned short* t,
     std::size_t data_count,
@@ -209,7 +219,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     long* t,
     std::size_t data_count,
@@ -220,7 +231,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     unsigned long* t,
     std::size_t data_count,
@@ -231,7 +243,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     long long* t,
     std::size_t data_count,
@@ -242,7 +255,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     unsigned long long* t,
     std::size_t data_count,
@@ -253,7 +267,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     float* t,
     std::size_t data_count,
@@ -264,7 +279,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     double* t,
     std::size_t data_count,
@@ -275,7 +291,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     long double* t,
     std::size_t data_count,
@@ -286,7 +303,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     std::string* t,
     std::size_t data_count,
@@ -319,7 +337,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     boost::serialization::collection_size_type* t,
     std::size_t data_count,
@@ -334,7 +353,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     wchar_t* t,
     std::size_t data_count,
@@ -348,7 +368,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_dataset
 (
     std::wstring* t,
     std::size_t data_count,
@@ -379,7 +400,8 @@ void hdf5_iprimitive::read_hdf5_dataset
 }
 
 
-void hdf5_iprimitive::read_hdf5_binary_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iprimitive::read_hdf5_binary_dataset
 (
     void *t,
     std::size_t data_count,
@@ -408,6 +430,8 @@ hdf5_iprimitive::hdf5_iprimitive
     init(ignore_header);
 }
 
+
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY())
 hdf5_iprimitive::~hdf5_iprimitive()
 {}
 

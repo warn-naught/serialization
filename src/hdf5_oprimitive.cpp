@@ -127,7 +127,8 @@ void hdf5_oprimitive::write_dataset_basic
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     bool const* t,
     std::size_t data_count,
@@ -142,7 +143,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     char const* t,
     std::size_t data_count,
@@ -153,7 +155,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     unsigned char const* t,
     std::size_t data_count,
@@ -164,7 +167,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     signed char const* t,
     std::size_t data_count,
@@ -175,7 +179,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     int const* t,
     std::size_t data_count,
@@ -186,7 +191,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     unsigned int const* t,
     std::size_t data_count,
@@ -197,7 +203,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     short const* t,
     std::size_t data_count,
@@ -208,7 +215,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     unsigned short const* t,
     std::size_t data_count,
@@ -219,7 +227,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     long const* t,
     std::size_t data_count,
@@ -230,7 +239,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     unsigned long const* t,
     std::size_t data_count,
@@ -241,7 +251,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     long long const* t,
     std::size_t data_count,
@@ -252,7 +263,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     unsigned long long const* t,
     std::size_t data_count,
@@ -263,7 +275,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     float const* t,
     std::size_t data_count,
@@ -274,7 +287,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     double const* t,
     std::size_t data_count,
@@ -285,7 +299,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     long double const* t,
     std::size_t data_count,
@@ -296,7 +311,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     const std::string *t,
     std::size_t data_count,
@@ -320,7 +336,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     boost::serialization::collection_size_type const* t,
     std::size_t data_count,
@@ -337,7 +354,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     wchar_t const* t,
     std::size_t data_count,
@@ -349,7 +367,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_dataset
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_dataset
 (
     const std::wstring *t,
     std::size_t data_count,
@@ -364,7 +383,8 @@ void hdf5_oprimitive::write_hdf5_dataset
 }
 
 
-void hdf5_oprimitive::write_hdf5_binary_dataset(
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::write_hdf5_binary_dataset(
     void const* address,
     std::size_t data_count,
     std::size_t object_number
@@ -381,14 +401,16 @@ void hdf5_oprimitive::write_hdf5_binary_dataset(
 }
 
 
-void hdf5_oprimitive::create_hdf5_group(std::string const& name)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::create_hdf5_group(std::string const& name)
 {
     hdf5_group group(*file_, name);
     group.close();
 }
 
 
-void hdf5_oprimitive::create_hdf5_hard_link
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::create_hdf5_hard_link
 (
     std::string const& source_path,
     std::string const& target_path
@@ -398,7 +420,8 @@ void hdf5_oprimitive::create_hdf5_hard_link
 }
 
 
-void hdf5_oprimitive::create_hdf5_soft_link
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::create_hdf5_soft_link
 (
     std::string const& source_path,
     std::string const& target_path
@@ -408,7 +431,8 @@ void hdf5_oprimitive::create_hdf5_soft_link
 }
 
 
-void hdf5_oprimitive::close()
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_oprimitive::close()
 {
     file_->close();
 }
@@ -427,7 +451,7 @@ hdf5_oprimitive::hdf5_oprimitive
     init(no_header);
 }
 
-
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
 hdf5_oprimitive::~hdf5_oprimitive()
 {}
 

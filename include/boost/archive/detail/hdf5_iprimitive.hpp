@@ -28,133 +28,152 @@ class hdf5_iprimitive
 {
 protected:
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         bool* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         char* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         unsigned char* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         signed char* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         wchar_t* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         int* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         unsigned int* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         short* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         unsigned short* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         long* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         unsigned long* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         long long* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         unsigned long long* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         float* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         double* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         long double* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         std::string* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         std::wstring* t,
         std::size_t data_count,
         std::size_t object_number
     );
 
-    void read_hdf5_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_dataset
     (
         boost::serialization::collection_size_type* t,
         std::size_t data_count,
@@ -162,13 +181,15 @@ protected:
     );
 
     // Read value of given attribute from an HDF5 group.
-    void read_hdf5_group_annotation
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_group_annotation
     (
         std::string const& name,
         std::string const& attribute,
         unsigned int& value
     );
-    void read_hdf5_group_annotation
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_group_annotation
     (
         std::string const& name,
         std::string const& attribute,
@@ -176,7 +197,8 @@ protected:
     );
 
     // Load block of raw bytes.
-    void read_hdf5_binary_dataset
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	read_hdf5_binary_dataset
     (
         void* t,
         std::size_t data_count,
@@ -184,7 +206,8 @@ protected:
     );
 
     // Close the HDF5 file. May throw!
-    void close();
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+	close();
 
     hdf5_iprimitive
     (
@@ -192,6 +215,7 @@ protected:
         bool ignore_header
     );
 
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
 	~hdf5_iprimitive();
 	
 private:

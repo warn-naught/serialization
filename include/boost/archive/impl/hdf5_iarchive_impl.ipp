@@ -10,7 +10,8 @@ namespace boost {
 namespace archive {
 
 template<class Archive>
-void hdf5_iarchive_impl<Archive>::load_override
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iarchive_impl<Archive>::load_override
 (
     boost::archive::object_id_type& t,
     int
@@ -23,7 +24,8 @@ void hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-void hdf5_iarchive_impl<Archive>::load_override
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iarchive_impl<Archive>::load_override
 (
     boost::archive::object_reference_type& t,
     int
@@ -38,7 +40,8 @@ void hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-void hdf5_iarchive_impl<Archive>::load_override
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iarchive_impl<Archive>::load_override
 (
     boost::archive::version_type& t,
     int
@@ -51,7 +54,8 @@ void hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-void hdf5_iarchive_impl<Archive>::load_override
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iarchive_impl<Archive>::load_override
 (
     boost::archive::class_id_type& t,
     int
@@ -64,7 +68,8 @@ void hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-void hdf5_iarchive_impl<Archive>::load_override
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iarchive_impl<Archive>::load_override
 (
     boost::archive::class_id_optional_type& /*t*/,
     int
@@ -86,7 +91,8 @@ void hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-void hdf5_iarchive_impl<Archive>::load_override
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iarchive_impl<Archive>::load_override
 (
     boost::archive::class_id_reference_type& t,
     int
@@ -101,7 +107,8 @@ void hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-void hdf5_iarchive_impl<Archive>::load_override
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iarchive_impl<Archive>::load_override
 (
     boost::archive::class_name_type& t,
     int
@@ -124,7 +131,8 @@ void hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-void hdf5_iarchive_impl<Archive>::load_override
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+hdf5_iarchive_impl<Archive>::load_override
 (
     boost::archive::tracking_type& t,
     int
@@ -137,6 +145,7 @@ void hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
 hdf5_iarchive_impl<Archive>::hdf5_iarchive_impl
 (
     std::string const& hdf5_filename,

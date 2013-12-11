@@ -73,14 +73,22 @@ protected:
     }
 
     // specific loads for attributes
-    void load_override(boost::archive::object_id_type& t, int);
-    void load_override(boost::archive::object_reference_type& t, int); // ???
-    void load_override(boost::archive::version_type& t, int);
-    void load_override(boost::archive::class_id_type& t, int);
-    void load_override(boost::archive::class_id_optional_type& t, int); // ???
-    void load_override(boost::archive::class_id_reference_type& t, int); // ???
-    void load_override(boost::archive::class_name_type& t, int);
-    void load_override(boost::archive::tracking_type& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    load_override(boost::archive::object_id_type& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    load_override(boost::archive::object_reference_type& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    load_override(boost::archive::version_type& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    load_override(boost::archive::class_id_type& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    load_override(boost::archive::class_id_optional_type& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    load_override(boost::archive::class_id_reference_type& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    load_override(boost::archive::class_name_type& t, int);
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+    load_override(boost::archive::tracking_type& t, int);
 
     // main template for serialization of primitive types
     template<class T>
@@ -116,8 +124,8 @@ protected:
         load(v);
         t = boost::serialization::item_version_type(v);
     }
-
-
+	
+	BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
     hdf5_iarchive_impl(std::string const& hdf5_filename, unsigned int flags);
 
 private:
