@@ -22,8 +22,8 @@ typedef detail::polymorphic_oarchive_route
 } // end namespace boost
 
 // required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(
-    boost::archive::polymorphic_hdf5_oarchive
-)
+BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::archive::polymorphic_hdf5_oarchive)
+// make array optimization possible
+BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(boost::archive::polymorphic_hdf5_oarchive)
 
 #endif // BOOST_ARCHIVE_POLYMORPHIC_HDF5_OARCHIVE_HPP

@@ -362,11 +362,13 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    std::wstring wstring(t, data_count);
-    write_hdf5_dataset(&wstring, 1, object_number); 
+    // If you can think of a better way to store wchar_t/wstring objects in HDF5, be my guest...
+    std::size_t size = data_count * sizeof(wchar_t);
+    write_hdf5_binary_dataset(t, size, object_number);
 }
 
 
+#ifndef BOOST_NO_STD_WSTRING
 BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
 hdf5_oprimitive::write_hdf5_dataset
 (
@@ -381,7 +383,7 @@ hdf5_oprimitive::write_hdf5_dataset
     void const* buffer = t->c_str();
     write_hdf5_binary_dataset(buffer, size, object_number);
 }
-
+#endif
 
 BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
 hdf5_oprimitive::write_hdf5_binary_dataset(

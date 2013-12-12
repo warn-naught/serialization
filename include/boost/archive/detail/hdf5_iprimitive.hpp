@@ -164,6 +164,7 @@ protected:
         std::size_t object_number
     );
 
+#ifndef BOOST_NO_STD_WSTRING
     BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
 	read_hdf5_dataset
     (
@@ -171,6 +172,7 @@ protected:
         std::size_t data_count,
         std::size_t object_number
     );
+#endif
 
     BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
 	read_hdf5_dataset

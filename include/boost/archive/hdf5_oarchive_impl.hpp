@@ -123,7 +123,9 @@ protected:
     void save(double const& t) { write_hdf5_primitive(t); }
     void save(long double const& t) { write_hdf5_primitive(t); }
     void save(std::string const& t) { write_hdf5_primitive(t); }
+#ifndef BOOST_NO_STD_WSTRING
     void save(std::wstring const& t) { write_hdf5_primitive(t); }
+#endif
     void save(boost::serialization::collection_size_type const& t) { write_hdf5_primitive(t); }
 
     // save for item_version objects.

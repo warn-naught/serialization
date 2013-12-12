@@ -114,8 +114,10 @@ protected:
     void load(double& t) { read_hdf5_primitive(t); }
     void load(long double& t) { read_hdf5_primitive(t); }
     void load(std::string& t) { read_hdf5_primitive(t); }
-    void load(std::wstring& t) { read_hdf5_primitive(t); }
-    void load(boost::serialization::collection_size_type& t) { read_hdf5_primitive(t); }
+ #ifndef BOOST_NO_STD_WSTRING
+	void load(std::wstring& t) { read_hdf5_primitive(t); }
+#endif
+	void load(boost::serialization::collection_size_type& t) { read_hdf5_primitive(t); }
 
     // load for item_version objects.
     void load(boost::serialization::item_version_type& t)

@@ -361,13 +361,13 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    std::wstring wstring;
-    read_hdf5_dataset(&wstring, 1, object_number); 
-    for(std::size_t i = 0; i < data_count; i++)
-      t[i] = wstring[i];
+    // If you can think of a better way to store wchar_t/wstring objects in HDF5, be my guest...
+	data_count = data_count * sizeof(wchar_t);
+    read_hdf5_binary_dataset(static_cast<void*>(t), data_count, object_number);
 }
 
 
+#ifndef BOOST_NO_STD_WSTRING
 BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
 hdf5_iprimitive::read_hdf5_dataset
 (
@@ -398,7 +398,7 @@ hdf5_iprimitive::read_hdf5_dataset
     datatype.close();
     dataset.close();
 }
-
+#endif
 
 BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
 hdf5_iprimitive::read_hdf5_binary_dataset

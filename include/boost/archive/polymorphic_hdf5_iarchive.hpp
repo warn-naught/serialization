@@ -25,8 +25,8 @@ public:
 } // namespace boost
 
 // required by export
-BOOST_SERIALIZATION_REGISTER_ARCHIVE(
-    boost::archive::polymorphic_hdf5_iarchive
-)
+BOOST_SERIALIZATION_REGISTER_ARCHIVE(boost::archive::polymorphic_hdf5_iarchive)
+// make array optimization possible
+BOOST_SERIALIZATION_USE_ARRAY_OPTIMIZATION(boost::archive::polymorphic_hdf5_iarchive)
 
 #endif // BOOST_ARCHIVE_POLYMORPHIC_HDF5_IARCHIVE_HPP
