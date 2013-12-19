@@ -22,6 +22,12 @@ if ! $(BOOST_ARCHIVE_LIST) {
         "xml_archive.hpp" 
         "xml_warchive.hpp" 
     ;
+
+	if [ modules.peek : HDF5_LIB_PATH ]
+	{
+		BOOST_ARCHIVE_LIST = $(BOOST_ARCHIVE_LIST) "hdf5_archive.hpp" ;
+	}
+
     # enable the tests which don't depend on a particular archive
     BOOST_SERIALIZATION_TEST = true ;
 }

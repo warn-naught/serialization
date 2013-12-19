@@ -82,7 +82,7 @@ SOURCES =
     xml_archive_exception
     shared_ptr_helper
 ;
-    
+
 WSOURCES = 
     basic_text_wiprimitive
     basic_text_woprimitive
@@ -95,19 +95,55 @@ WSOURCES =
     codecvt_null
 ;
 
+for local v in HDF5_INCLUDE_PATH HDF5_LIB_PATH HDF5_BIN_PATH
+{
+    $(v) = [ modules.peek : $(v) ] ;
+}
+
+if $(HDF5_INCLUDE_PATH) && $(HDF5_LIB_PATH)
+{
+	HDF5_INCLUDES = $(HDF5_INCLUDE_PATH) ;
+	HDF5_SOURCES =
+	    hdf5_annotation.cpp
+		hdf5_dataset.cpp
+	    hdf5_file.cpp
+        hdf5_iprimitive.cpp
+        hdf5_oprimitive.cpp
+        hdf5_archive_exception.cpp
+        hdf5_dataspace.cpp
+        hdf5_group.cpp
+        hdf5_oarchive.cpp
+        hdf5_common_archive.cpp
+        hdf5_datatype.cpp
+        hdf5_iarchive.cpp
+        hdf5_object.cpp
+		hdf5
+   ;
+
+	if ! $(HDF5_BIN_PATH)
+	{
+		HDF5_BIN_PATH = $(HDF5_LIB_PATH) ;
+	}
+}
+
+lib hdf5
+    :
+    : <name>hdf5 
+	  <search>$(HDF5_BIN_PATH)
+	  <search>$(HDF5_LIB_PATH)
+    ;
 
 lib boost_serialization 
-    : $(SOURCES).cpp
-    : 
-    <toolset>msvc:<cxxflags>/Gy
+    : $(SOURCES).cpp $(HDF5_SOURCES)
+    : <include>$(HDF5_INCLUDES)
+      <toolset>msvc:<cxxflags>/Gy
     #<toolset>gcc:<cxxflags>"-fvisibility=hidden"
     <link>shared:<define>BOOST_SERIALIZATION_DYN_LINK=1
     ;
 
 lib boost_wserialization 
     : $(WSOURCES).cpp boost_serialization 
-    :     
-    <toolset>msvc:<cxxflags>/Gy 
+    : <toolset>msvc:<cxxflags>/Gy 
     #<toolset>gcc:<cxxflags>"-fvisibility=hidden"
     <link>shared:<define>BOOST_SERIALIZATION_DYN_LINK=1
     ;
