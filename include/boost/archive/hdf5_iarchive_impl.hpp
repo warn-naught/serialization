@@ -1,6 +1,10 @@
 /*+-------------------------------------------------------------------------+
   | hdf5_archive: a boost::serialization archive using HDF5 format          |
   | Copyright (C) 2012-2013 Daniel Koester (dk@eada.de)                     |
+  |                                                                         |
+  | Use, modification and distribution is subject to the Boost Software     |
+  | License, Version 1.0. (See accompanying file LICENSE_1_0.txt or copy at |
+  | http://www.boost.org/LICENSE_1_0.txt)                                   |
   +-------------------------------------------------------------------------+*/
 
 #ifndef BOOST_ARCHIVE_HDF5_IARCHIVE_IMPL_HPP
