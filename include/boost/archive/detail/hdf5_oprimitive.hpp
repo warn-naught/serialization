@@ -11,6 +11,8 @@
 #define BASIC_HDF5_OPRIMITIVE_HPP
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/archive/hdf5_memory_buffer.hpp>
 #include <boost/archive/detail/hdf5_common_archive.hpp>
 
 namespace boost {
@@ -238,12 +240,20 @@ protected:
         bool use_variable_length_strings
     );
 
+    hdf5_oprimitive
+    (
+        shared_ptr<hdf5_memory_buffer> buffer,
+        bool no_header,
+        bool use_variable_length_strings
+    );
+
     BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
 	~hdf5_oprimitive();
 
 private:
-	// hide HDF5 implementation details
+    // hide HDF5 implementation details
     scoped_ptr<hdf5_file> file_;
+
     bool const use_variable_length_strings_;
 
     void init(bool suppress_header);

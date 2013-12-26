@@ -14,7 +14,8 @@
 #include <boost/serialization/collection_size_type.hpp>
 #include <boost/serialization/throw_exception.hpp>
 #include <boost/archive/archive_exception.hpp>
-#include <boost/archive/detail/hdf5_file.hpp>
+#include <boost/archive/detail/hdf5_disk_file.hpp>
+#include <boost/archive/detail/hdf5_memory_file.hpp>
 #include <boost/archive/detail/hdf5_group.hpp>
 #include <boost/archive/detail/hdf5_annotation.hpp>
 #include <boost/archive/detail/hdf5_dataset.hpp>
@@ -429,7 +430,19 @@ hdf5_iprimitive::hdf5_iprimitive
     bool ignore_header
 )
     :
-      file_(new hdf5_file(hdf5_filename, hdf5_file::READ_ONLY))
+      file_(new hdf5_disk_file(hdf5_filename, hdf5_file::READ_ONLY))
+{
+    init(ignore_header);
+}
+
+
+hdf5_iprimitive::hdf5_iprimitive
+(
+    shared_ptr<hdf5_memory_buffer> buffer,
+    bool ignore_header
+)
+    :
+    file_(new hdf5_memory_file(buffer, hdf5_file::READ_ONLY))
 {
     init(ignore_header);
 }

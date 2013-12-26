@@ -305,4 +305,23 @@ hdf5_oarchive_impl<Archive>::hdf5_oarchive_impl
     group_stack_()
 {}
 
+
+template<class Archive>
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY())
+hdf5_oarchive_impl<Archive>::hdf5_oarchive_impl
+(
+    shared_ptr<hdf5_memory_buffer> buffer,
+    unsigned int flags
+)
+    :
+    boost::archive::detail::common_oarchive<Archive>(flags),
+    hdf5_oprimitive(buffer,
+                          flags & boost::archive::no_header,
+                          flags & use_variable_length_strings),
+    next_object_is_attribute_(),
+    object_count_(),
+    group_count_(),
+    group_stack_()
+{}
+
 } } // end namespace boost::archive

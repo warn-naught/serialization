@@ -14,7 +14,8 @@
 #include <boost/static_assert.hpp>
 #include <boost/archive/basic_archive.hpp>
 #include <boost/serialization/collection_size_type.hpp>
-#include <boost/archive/detail/hdf5_file.hpp>
+#include <boost/archive/detail/hdf5_disk_file.hpp>
+#include <boost/archive/detail/hdf5_memory_file.hpp>
 #include <boost/archive/detail/hdf5_group.hpp>
 #include <boost/archive/detail/hdf5_dataset.hpp>
 #include <boost/archive/detail/hdf5_datatype.hpp>
@@ -451,11 +452,26 @@ hdf5_oprimitive::hdf5_oprimitive
     bool use_variable_length_strings
 )
     :
-      file_(new hdf5_file(hdf5_filename, hdf5_file::READ_WRITE)),
+      file_(new hdf5_disk_file(hdf5_filename, hdf5_file::READ_WRITE)),
       use_variable_length_strings_(use_variable_length_strings)
 {
     init(no_header);
 }
+
+
+hdf5_oprimitive::hdf5_oprimitive
+(
+    shared_ptr<hdf5_memory_buffer> buffer,
+    bool no_header,
+    bool use_variable_length_strings
+)
+    :
+      file_(new hdf5_memory_file(buffer, hdf5_file::READ_WRITE)),
+      use_variable_length_strings_(use_variable_length_strings)
+{
+    init(no_header);
+}
+
 
 BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
 hdf5_oprimitive::~hdf5_oprimitive()

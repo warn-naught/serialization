@@ -35,18 +35,8 @@ public:
         READ_WRITE
     };
 
-    /*! \brief Open an HDF5 file. May throw!
-     *
-     * File must exist already if opened in READ_ONLY mode. If file exists
-     * and is opened in WRITE_ONLY, it will be truncated.
-     */
-    hdf5_file(std::string const& filename, file_mode_t mode);
-
-    //! Free resources on destruction.
-    virtual ~hdf5_file()
-    {
-        close_without_throwing();
-    }
+    //! Open an HDF5 file. May throw!
+    hdf5_file(hid_t id);
 
     //! Create a hard link to a given target object. May throw!
     //! All paths must be absolute paths from the file root group.
@@ -64,15 +54,9 @@ public:
         std::string const& target_path
     );
 
-
-    //! Get the HDF5 file name.
-    std::string const& get_filename() const;
-
 private:
-    std::string filename_;
-
     //! Close the file handle, flushing all buffers. May throw!
-    virtual void close_impl();
+    virtual void close_impl() = 0;
 };
 
 } } } // end namespace boost::archive::detail

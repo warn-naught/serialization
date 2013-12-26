@@ -131,8 +131,12 @@ protected:
         t = boost::serialization::item_version_type(v);
     }
 	
-	BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
     hdf5_iarchive_impl(std::string const& hdf5_filename, unsigned int flags);
+
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
+    hdf5_iarchive_impl(shared_ptr<hdf5_memory_buffer> buffer, 
+    unsigned int flags);
 
 private:
     std::size_t object_count_;

@@ -38,6 +38,19 @@ public:
         )
     {}
 
+
+    naked_hdf5_iarchive
+    (
+        shared_ptr<hdf5_memory_buffer> buffer,
+        unsigned int flags = 0
+    )
+        :
+        hdf5_iarchive_impl<naked_hdf5_iarchive>(
+            buffer,
+            flags
+        )
+    {}
+
     ~naked_hdf5_iarchive()
     {}
 };
@@ -61,6 +74,12 @@ public:
     hdf5_iarchive(std::string const& hdf5_filename, unsigned int flags = 0)
         :
         hdf5_iarchive_impl<hdf5_iarchive>(hdf5_filename, flags)
+    {}
+
+    hdf5_iarchive(shared_ptr<hdf5_memory_buffer> buffer, 
+    unsigned int flags = 0)
+        :
+        hdf5_iarchive_impl<hdf5_iarchive>(buffer, flags)
     {}
 
     ~hdf5_iarchive()

@@ -161,4 +161,18 @@ hdf5_iarchive_impl<Archive>::hdf5_iarchive_impl
     object_count_()
 {}
 
+
+template<class Archive>
+BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
+hdf5_iarchive_impl<Archive>::hdf5_iarchive_impl
+(
+    shared_ptr<hdf5_memory_buffer> buffer,
+    unsigned int flags
+)
+    :
+    boost::archive::detail::common_iarchive<Archive>(flags),
+    hdf5_iprimitive(buffer, flags & boost::archive::no_header),
+    object_count_()
+{}
+
 } } // end namespace boost::archive

@@ -32,6 +32,12 @@ public:
         hdf5_oarchive_impl<hdf5_oarchive>(hdf5_filename, flags)
     {}
 
+    hdf5_oarchive(shared_ptr<hdf5_memory_buffer> buffer, 
+                  unsigned int flags = 0)
+        :
+        hdf5_oarchive_impl<hdf5_oarchive>(buffer, flags)
+    {}
+
     ~hdf5_oarchive()
     {}
 };

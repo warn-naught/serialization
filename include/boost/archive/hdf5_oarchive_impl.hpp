@@ -141,6 +141,10 @@ protected:
     BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
     hdf5_oarchive_impl(std::string const& hdf5_filename, unsigned int flags);
 
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
+    hdf5_oarchive_impl(shared_ptr<hdf5_memory_buffer> buffer, 
+    unsigned int flags);
+
 private:
     bool next_object_is_attribute_;
     std::size_t object_count_;

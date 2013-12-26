@@ -10,7 +10,9 @@
 #ifndef BOOST_ARCHIVE_DETAIL_HDF5_IPRIMITIVE_HPP
 #define BOOST_ARCHIVE_DETAIL_HDF5_IPRIMITIVE_HPP
 
+#include <boost/shared_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/archive/hdf5_memory_buffer.hpp>
 #include <boost/archive/detail/hdf5_common_archive.hpp>
 
 namespace boost {
@@ -221,12 +223,19 @@ protected:
         bool ignore_header
     );
 
-	BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
+    hdf5_iprimitive
+    (
+        shared_ptr<hdf5_memory_buffer> buffer,
+        bool ignore_header
+    );
+
+    BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
 	~hdf5_iprimitive();
 	
 private:
-	// hide HDF5 implementation details
+    // hide HDF5 implementation details
     scoped_ptr<const hdf5_file> file_;
+    
     void init(bool ignore_header);
 
     void read_dataset_basic
