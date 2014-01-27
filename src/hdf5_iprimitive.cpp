@@ -147,7 +147,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_CHAR), object_number);
+    hdf5_datatype char_type(H5T_NATIVE_CHAR);
+    read_dataset_basic(t, data_count, char_type, object_number);
 }
 
 
@@ -159,7 +160,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_UCHAR), object_number);
+    hdf5_datatype char_type(H5T_NATIVE_UCHAR);
+    read_dataset_basic(t, data_count, char_type, object_number);
 }
 
 
@@ -171,7 +173,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_SCHAR), object_number);
+    hdf5_datatype char_type(H5T_NATIVE_SCHAR);
+    read_dataset_basic(t, data_count, char_type, object_number);
 }
 
 
@@ -183,7 +186,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_INT), object_number);
+    hdf5_datatype int_type(H5T_NATIVE_INT);
+    read_dataset_basic(t, data_count, int_type, object_number);
 }
 
 
@@ -195,7 +199,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_UINT), object_number);
+    hdf5_datatype int_type(H5T_NATIVE_UINT);
+    read_dataset_basic(t, data_count, int_type, object_number);
 }
 
 
@@ -207,7 +212,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_SHORT), object_number);
+    hdf5_datatype short_type(H5T_NATIVE_SHORT);
+    read_dataset_basic(t, data_count, short_type, object_number);
 }
 
 
@@ -219,7 +225,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_USHORT), object_number);
+    hdf5_datatype short_type(H5T_NATIVE_USHORT);
+    read_dataset_basic(t, data_count, short_type, object_number);
 }
 
 
@@ -231,7 +238,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_LONG), object_number);
+    hdf5_datatype long_type(H5T_NATIVE_LONG);
+    read_dataset_basic(t, data_count, long_type, object_number);
 }
 
 
@@ -243,7 +251,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_ULONG), object_number);
+    hdf5_datatype long_type(H5T_NATIVE_ULONG);
+    read_dataset_basic(t, data_count, long_type, object_number);
 }
 
 
@@ -255,7 +264,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_LLONG), object_number);
+    hdf5_datatype long_type(H5T_NATIVE_LLONG);
+    read_dataset_basic(t, data_count, long_type, object_number);
 }
 
 
@@ -267,7 +277,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_ULLONG), object_number);
+    hdf5_datatype long_type(H5T_NATIVE_ULLONG);
+    read_dataset_basic(t, data_count, long_type, object_number);
 }
 
 
@@ -279,7 +290,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_FLOAT), object_number);
+    hdf5_datatype float_type(H5T_NATIVE_FLOAT);
+    read_dataset_basic(t, data_count, float_type, object_number);
 }
 
 
@@ -291,7 +303,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_DOUBLE), object_number);
+    hdf5_datatype double_type(H5T_NATIVE_DOUBLE);
+    read_dataset_basic(t, data_count, double_type, object_number);
 }
 
 
@@ -303,7 +316,8 @@ hdf5_iprimitive::read_hdf5_dataset
     std::size_t object_number
 )
 {
-    read_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_LDOUBLE), object_number);
+    hdf5_datatype double_type(H5T_NATIVE_LDOUBLE);
+    read_dataset_basic(t, data_count, double_type, object_number);
 }
 
 
@@ -352,7 +366,8 @@ hdf5_iprimitive::read_hdf5_dataset
     BOOST_STATIC_ASSERT(sizeof(size_t) <= sizeof(hsize_t));
 
     hsize_t i;
-    read_dataset_basic(&i, data_count, hdf5_datatype(H5T_NATIVE_HSIZE), object_number);
+    hdf5_datatype size_type(H5T_NATIVE_HSIZE);
+    read_dataset_basic(&i, data_count, size_type, object_number);
     *t = boost::serialization::collection_size_type(i);
 }
 
@@ -366,7 +381,7 @@ hdf5_iprimitive::read_hdf5_dataset
 )
 {
     // If you can think of a better way to store wchar_t/wstring objects in HDF5, be my guest...
-	data_count = data_count * sizeof(wchar_t);
+    data_count = data_count * sizeof(wchar_t);
     read_hdf5_binary_dataset(static_cast<void*>(t), data_count, object_number);
 }
 

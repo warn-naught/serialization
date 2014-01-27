@@ -155,7 +155,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_CHAR), object_number);
+    hdf5_datatype char_type(H5T_NATIVE_CHAR);
+    write_dataset_basic(t, data_count, char_type, object_number);
 }
 
 
@@ -167,7 +168,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_UCHAR), object_number);
+    hdf5_datatype char_type(H5T_NATIVE_UCHAR);
+    write_dataset_basic(t, data_count, char_type, object_number);
 }
 
 
@@ -179,7 +181,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_SCHAR), object_number);
+    hdf5_datatype char_type(H5T_NATIVE_SCHAR);
+    write_dataset_basic(t, data_count, char_type, object_number);
 }
 
 
@@ -191,7 +194,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_INT), object_number);
+    hdf5_datatype int_type(H5T_NATIVE_INT);
+    write_dataset_basic(t, data_count, int_type, object_number);
 }
 
 
@@ -203,7 +207,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_UINT), object_number);
+    hdf5_datatype int_type(H5T_NATIVE_UINT);
+    write_dataset_basic(t, data_count, int_type, object_number);
 }
 
 
@@ -215,7 +220,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_SHORT), object_number);
+    hdf5_datatype short_type(H5T_NATIVE_SHORT);
+    write_dataset_basic(t, data_count, short_type, object_number);
 }
 
 
@@ -227,7 +233,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_USHORT), object_number);
+    hdf5_datatype short_type(H5T_NATIVE_USHORT);
+    write_dataset_basic(t, data_count, short_type, object_number);
 }
 
 
@@ -239,7 +246,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_LONG), object_number);
+    hdf5_datatype long_type(H5T_NATIVE_LONG);
+    write_dataset_basic(t, data_count, long_type, object_number);
 }
 
 
@@ -251,7 +259,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_ULONG), object_number);
+    hdf5_datatype long_type(H5T_NATIVE_ULONG);
+    write_dataset_basic(t, data_count, long_type, object_number);
 }
 
 
@@ -263,7 +272,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_LLONG), object_number);
+    hdf5_datatype long_type(H5T_NATIVE_LLONG);
+    write_dataset_basic(t, data_count, long_type, object_number);
 }
 
 
@@ -275,7 +285,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_ULLONG), object_number);
+    hdf5_datatype long_type(H5T_NATIVE_ULLONG);
+    write_dataset_basic(t, data_count, long_type, object_number);
 }
 
 
@@ -287,7 +298,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_FLOAT), object_number);
+    hdf5_datatype float_type(H5T_NATIVE_FLOAT);
+    write_dataset_basic(t, data_count, float_type, object_number);
 }
 
 
@@ -299,7 +311,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_DOUBLE), object_number);
+    hdf5_datatype double_type(H5T_NATIVE_DOUBLE);
+    write_dataset_basic(t, data_count, double_type, object_number);
 }
 
 
@@ -311,7 +324,8 @@ hdf5_oprimitive::write_hdf5_dataset
     std::size_t object_number
 )
 {
-    write_dataset_basic(t, data_count, hdf5_datatype(H5T_NATIVE_LDOUBLE), object_number);
+    hdf5_datatype double_type(H5T_NATIVE_LDOUBLE);
+    write_dataset_basic(t, data_count, double_type, object_number);
 }
 
 
@@ -354,7 +368,8 @@ hdf5_oprimitive::write_hdf5_dataset
     // paranoid and perhaps unnecessary checking...
     BOOST_ASSERT(boost::serialization::collection_size_type(i) == *t);
 
-    write_dataset_basic(&i, data_count, hdf5_datatype(H5T_NATIVE_HSIZE), object_number);
+    hdf5_datatype size_type(H5T_NATIVE_HSIZE);
+    write_dataset_basic(&i, data_count, size_type, object_number);
 }
 
 
