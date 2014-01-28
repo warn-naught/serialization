@@ -20,41 +20,41 @@ Further advantages of HDF5 are the following:
 To compile and install this work in a Linux environment, please follow the following steps:
 
 1. Retrieve the official Git boost superproject
-
-    $ git clone --recursive https://github.com/boostorg/boost.git modular-boost
+```bash
+git clone --recursive https://github.com/boostorg/boost.git modular-boost
+```
 
 2. Change the serialization module to refer to the HDF5 archive version. For a recent
 version of Git you can edit the following line in ".gitmodules":
 
-    "url = ../serialization.git" --> "url = https://github.com/dk1978/serialization"
+> "url = ../serialization.git" --> "url = https://github.com/dk1978/serialization"
 
 3. Synchronize submodules:
-4. 
-    $ git submodule sync
+```bash
+git submodule sync
+```
 
 4. Pull HDF5 serialization code from remote repository.
-
-    $ cd libs/serialization
-
-    $ git pull origin master
+```bash
+cd libs/serialization
+git pull origin master
+```
 
 5. Bootstrap and update Boost headers (see https://svn.boost.org/trac/boost/wiki/TryModBoost for details)
-
-    $ cd ../..
-
-    $ ./bootstrap.sh
-
-    $ ./b2 headers
-
+```bash
+cd ../..
+./bootstrap.sh
+./b2 headers
+```
 
 6. Define paths to HDF5 headers and library (assuming a bash shell syntax)
-
-    $ export HDF5_INCLUDE_PATH=...
-
-    $ export HDF5_LIB_PATH=...
+```bash
+export HDF5_INCLUDE_PATH=...
+export HDF5_LIB_PATH=...
+```
 
 7. Compile serialization lib
-
-    $ cd libs/serialization/build
-
-    $ ../../../b2 -q
+```bash
+cd libs/serialization/build
+../../../b2 -q
+```
