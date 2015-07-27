@@ -27,7 +27,7 @@ git clone --recursive https://github.com/boostorg/boost.git modular-boost
 2. Change the serialization module to refer to the HDF5 archive version. For a recent
 version of Git you can edit the following line in ".gitmodules":
 
-> "url = ../serialization.git" --> "url = https://github.com/dk1978/serialization"
+> "url = ../serialization.git" --> "url = https://github.com/warn-naught/serialization.git"
 
 3. Synchronize submodules:
 ```bash
