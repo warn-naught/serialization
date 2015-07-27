@@ -7,7 +7,7 @@
 #endif
 
 /////////1/////////2/////////3/////////4/////////5/////////6/////////7/////////8
-// collections_load_imp.hpp: serialization for loading stl collections
+// stack_constructor.hpp: serialization for loading stl collections
 
 // (C) Copyright 2002 Robert Ramey - http://www.rrsd.com . 
 // Use, modification and distribution is subject to the Boost Software
@@ -34,13 +34,9 @@ struct stack_allocate
         return * address();
     }
 private:
-    typedef BOOST_DEDUCED_TYPENAME boost::aligned_storage<
+    typedef typename boost::aligned_storage<
         sizeof(T), 
-        #if BOOST_WORKAROUND(__BORLANDC__,BOOST_TESTED_AT(0x560))
-            8
-        #else
-            boost::alignment_of<T>::value
-        #endif
+        boost::alignment_of<T>::value
     > type;
     type storage_;
 };

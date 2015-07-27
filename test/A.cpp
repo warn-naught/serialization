@@ -10,7 +10,6 @@
 
 #include <cassert>
 #include <cstdlib> // rand()
-#include <cmath>   // fabs()
 #include <cstddef> // size_t
 #include <boost/math/special_functions/next.hpp>
 
@@ -18,7 +17,6 @@
 #if defined(BOOST_NO_STDC_NAMESPACE)
 namespace std{
     using ::rand; 
-    using ::fabs;
     using ::size_t;
 }
 #endif
@@ -38,7 +36,7 @@ void randomize(S &x)
         unsigned int i = std::rand() % 27;
         if(0 == i)
             break;
-        x += static_cast<BOOST_DEDUCED_TYPENAME S::value_type>('a' - 1 + i);
+        x += static_cast<typename S::value_type>('a' - 1 + i);
     }
 }
 

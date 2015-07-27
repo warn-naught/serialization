@@ -19,7 +19,6 @@
 #include <cstdio> // remove
 #include <fstream>
 #include <boost/config.hpp>
-#include <cmath> // for fabs()
 #include <boost/math/special_functions/next.hpp>
 #if defined(BOOST_NO_STDC_NAMESPACE)
 namespace std{ 
@@ -69,7 +68,7 @@ public:
     template <class T, class U>
     bool operator()( const T & t, const U & u) const 
     {
-        typedef BOOST_DEDUCED_TYPENAME boost::mpl::eval_if<boost::is_same<T, U>,
+        typedef typename boost::mpl::eval_if<boost::is_same<T, U>,
             boost::mpl::identity<same>,
             boost::mpl::identity<not_same>
         >::type type;
