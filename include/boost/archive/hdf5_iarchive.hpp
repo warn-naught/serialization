@@ -48,14 +48,14 @@ public:
 // structure associated with every archive.  We created a "mix-in"
 // class to provide this functionality.  Since shared_ptr holds a
 // special esteem in the boost library - we included it here by default.
-#include <boost/archive/shared_ptr_helper.hpp>
+#include <boost/serialization/shared_ptr_helper.hpp>
 
 namespace boost {
 namespace archive {
 
 class hdf5_iarchive :
         public hdf5_iarchive_impl<hdf5_iarchive>,
-        public boost::archive::detail::shared_ptr_helper
+        public boost::serialization::shared_ptr_helper<shared_ptr>
 {
 public:
     hdf5_iarchive(std::string const& hdf5_filename, unsigned int flags = 0)

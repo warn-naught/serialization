@@ -14,11 +14,10 @@ namespace boost {
 namespace archive {
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_iarchive_impl<Archive>::load_override
 (
-    boost::archive::object_id_type& t,
-    int
+    boost::archive::object_id_type& t
 )
 {
     unsigned int i;
@@ -28,11 +27,10 @@ hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_iarchive_impl<Archive>::load_override
 (
-    boost::archive::object_reference_type& t,
-    int
+    boost::archive::object_reference_type&
 )
 {
     unsigned int i;
@@ -44,11 +42,10 @@ hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void  
 hdf5_iarchive_impl<Archive>::load_override
 (
-    boost::archive::version_type& t,
-    int
+    boost::archive::version_type& t
 )
 {
     unsigned int i;
@@ -58,11 +55,10 @@ hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_iarchive_impl<Archive>::load_override
 (
-    boost::archive::class_id_type& t,
-    int
+    boost::archive::class_id_type& t
 )
 {
     size_t i;
@@ -72,11 +68,10 @@ hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void 
 hdf5_iarchive_impl<Archive>::load_override
 (
-    boost::archive::class_id_optional_type& /*t*/,
-    int
+    boost::archive::class_id_optional_type& /*t*/
 )
 {
     // WARNING: class_id_optional_type needs a special treatment.
@@ -95,11 +90,10 @@ hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_iarchive_impl<Archive>::load_override
 (
-    boost::archive::class_id_reference_type& t,
-    int
+    boost::archive::class_id_reference_type& t
 )
 {
     size_t i;
@@ -111,11 +105,10 @@ hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_iarchive_impl<Archive>::load_override
 (
-    boost::archive::class_name_type& t,
-    int
+    boost::archive::class_name_type& t
 )
 {
     std::string s;
@@ -135,11 +128,10 @@ hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_iarchive_impl<Archive>::load_override
 (
-    boost::archive::tracking_type& t,
-    int
+    boost::archive::tracking_type& t
 )
 {
     bool i;
@@ -149,7 +141,7 @@ hdf5_iarchive_impl<Archive>::load_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY()) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL BOOST_PP_EMPTY()
 hdf5_iarchive_impl<Archive>::hdf5_iarchive_impl
 (
     std::string const& hdf5_filename,

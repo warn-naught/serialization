@@ -136,7 +136,7 @@ lib boost_serialization
     : $(SOURCES).cpp $(HDF5_SOURCES)
     : <include>$(HDF5_INCLUDES)
       <toolset>msvc:<cxxflags>/Gy
-    # maybe the following toosets should be removed
+    # maybe the following toolsets should be removed
     <toolset>msvc:<define>_SCL_SECURE_NO_WARNINGS
     <toolset>gcc:<cxxflags>"-fvisibility=hidden"
     <toolset>gcc:<cxxflags>"-fvisibility-inlines-hidden"
@@ -149,7 +149,7 @@ lib boost_wserialization
     : $(WSOURCES).cpp boost_serialization 
     : 
     <toolset>msvc:<cxxflags>/Gy 
-    # maybe the following toosets should be removed
+    # maybe the following toolsets should be removed
     <toolset>msvc:<define>_SCL_SECURE_NO_WARNINGS
     <toolset>gcc:<cxxflags>"-fvisibility=hidden"
     <toolset>gcc:<cxxflags>"-fvisibility-inlines-hidden"

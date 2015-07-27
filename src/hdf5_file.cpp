@@ -14,6 +14,10 @@
 #include <boost/archive/hdf5_archive_exception.hpp>
 #include <boost/archive/detail/hdf5_file.hpp>
 
+//byWarn
+typedef int hid_t;
+#define H5P_DEFAULT     (hid_t)0
+
 namespace boost {
 namespace archive {
 namespace detail {

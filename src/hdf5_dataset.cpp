@@ -18,6 +18,10 @@
 #include <boost/archive/detail/hdf5_dataspace.hpp>
 #include <boost/archive/detail/hdf5_dataset.hpp>
 
+//byWarn
+typedef int hid_t;
+#define H5P_DEFAULT     (hid_t)0
+
 namespace boost {
 namespace archive {
 namespace detail {

@@ -53,13 +53,13 @@ protected:
     // Anything not an attribute and not a name-value pair is an
     // should be trapped here.
     template<class T>
-    void load_override(T & t,  BOOST_PFTO int)
+    void load_override(T & t)
     {
         // If your program fails to compile here, its most likely due to
         // not specifying an nvp wrapper around the variable to
         // be serialized.
         BOOST_MPL_ASSERT((boost::serialization::is_wrapper< T >));
-        this->detail_common_iarchive::load_override(t, 0);
+        this->detail_common_iarchive::load_override(t);
     }
 
 
@@ -69,30 +69,29 @@ protected:
         #ifndef BOOST_NO_FUNCTION_TEMPLATE_ORDERING
         const
         #endif
-        boost::serialization::nvp< T > & t,
-        int
+        boost::serialization::nvp< T > & t
     )
     {
-        this->detail_common_iarchive::load_override(t.value(), 0);
+        this->detail_common_iarchive::load_override(t.value());
     }
 
     // specific loads for attributes
 	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
-    load_override(boost::archive::object_id_type& t, int);
+    load_override(boost::archive::object_id_type& t);
 	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
-    load_override(boost::archive::object_reference_type& t, int);
+    load_override(boost::archive::object_reference_type& t);
 	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
-    load_override(boost::archive::version_type& t, int);
+    load_override(boost::archive::version_type& t);
 	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
-    load_override(boost::archive::class_id_type& t, int);
+    load_override(boost::archive::class_id_type& t);
 	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
-    load_override(boost::archive::class_id_optional_type& t, int);
+    load_override(boost::archive::class_id_optional_type& t);
 	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
-    load_override(boost::archive::class_id_reference_type& t, int);
+    load_override(boost::archive::class_id_reference_type& t);
 	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
-    load_override(boost::archive::class_name_type& t, int);
+    load_override(boost::archive::class_name_type& t);
 	BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
-    load_override(boost::archive::tracking_type& t, int);
+    load_override(boost::archive::tracking_type& t);
 
     // main template for serialization of primitive types
     template<class T>

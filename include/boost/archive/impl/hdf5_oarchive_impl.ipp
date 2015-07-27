@@ -14,11 +14,10 @@ namespace boost {
 namespace archive {
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::save_override
 (
-    boost::archive::object_id_type const& t,
-    int
+    boost::archive::object_id_type const& t
 )
 {
     unsigned int const i = t;
@@ -30,11 +29,10 @@ hdf5_oarchive_impl<Archive>::save_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::save_override
 (
-    boost::archive::object_reference_type const& t,
-    int
+    boost::archive::object_reference_type const& t
 )
 {
     unsigned int const i = t;
@@ -46,11 +44,10 @@ hdf5_oarchive_impl<Archive>::save_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void 
 hdf5_oarchive_impl<Archive>::save_override
 (
-    boost::archive::version_type const& t,
-    int
+    boost::archive::version_type const& t
 )
 {
     unsigned int const i = t;
@@ -61,11 +58,10 @@ hdf5_oarchive_impl<Archive>::save_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void 
 hdf5_oarchive_impl<Archive>::save_override
 (
-    boost::archive::class_id_type const& t,
-    int
+    boost::archive::class_id_type const& t
 )
 {
     size_t i = t;
@@ -76,11 +72,10 @@ hdf5_oarchive_impl<Archive>::save_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::save_override
 (
-    boost::archive::class_id_optional_type const& /*t*/,
-    int
+    boost::archive::class_id_optional_type const& /*t*/
 )
 {
     // WARNING: class_id_optional_type needs a special treatment.
@@ -98,11 +93,10 @@ hdf5_oarchive_impl<Archive>::save_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::save_override
 (
-    boost::archive::class_id_reference_type const& t,
-    int
+    boost::archive::class_id_reference_type const& t
 )
 {
     size_t i = t;
@@ -113,11 +107,10 @@ hdf5_oarchive_impl<Archive>::save_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::save_override
 (
-    boost::archive::class_name_type const& t,
-    int
+    boost::archive::class_name_type const& t
 )
 {
     const std::string s(t);
@@ -128,11 +121,10 @@ hdf5_oarchive_impl<Archive>::save_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void) 
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::save_override
 (
-    boost::archive::tracking_type const& t,
-    int
+    boost::archive::tracking_type const& t
 )
 {
     write_attribute_on_current_hdf5_group("class_tracking", t.t);
@@ -142,7 +134,7 @@ hdf5_oarchive_impl<Archive>::save_override
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(std::string)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL std::string
 hdf5_oarchive_impl<Archive>::create_tree_object_path() const
 {
     std::ostringstream ss;
@@ -160,7 +152,7 @@ hdf5_oarchive_impl<Archive>::create_tree_object_path() const
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void 
 hdf5_oarchive_impl<Archive>::link_data_object()
 {
     if(!next_object_is_attribute_) {
@@ -175,7 +167,7 @@ hdf5_oarchive_impl<Archive>::link_data_object()
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::link_tracked_object(unsigned int object)
 {
     std::string source_path = create_tracked_objects_path(object);
@@ -186,7 +178,7 @@ hdf5_oarchive_impl<Archive>::link_tracked_object(unsigned int object)
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::link_tracked_object_reference
 (
     unsigned int object_reference
@@ -207,7 +199,7 @@ hdf5_oarchive_impl<Archive>::link_tracked_object_reference
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::write_hdf5_binary
 (
     void const* address,
@@ -224,7 +216,7 @@ hdf5_oarchive_impl<Archive>::write_hdf5_binary
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::link_data_and_update_object_count()
 {
     link_data_object();
@@ -233,7 +225,7 @@ hdf5_oarchive_impl<Archive>::link_data_and_update_object_count()
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::create_hdf5_group()
 {
     hdf5_oprimitive::create_hdf5_group(
@@ -244,7 +236,7 @@ hdf5_oarchive_impl<Archive>::create_hdf5_group()
 
 template<class Archive>
 template <typename ValueType>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::write_attribute_on_current_hdf5_group
 (
     std::string const& attribute,
@@ -263,7 +255,7 @@ hdf5_oarchive_impl<Archive>::write_attribute_on_current_hdf5_group
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void 
 hdf5_oarchive_impl<Archive>::start_hdf5_group(char const* name)
 {
     std::ostringstream group_name;
@@ -280,7 +272,7 @@ hdf5_oarchive_impl<Archive>::start_hdf5_group(char const* name)
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(void)
+BOOST_ARCHIVE_OR_WARCHIVE_DECL void
 hdf5_oarchive_impl<Archive>::end_hdf5_group()
 {
     group_stack_.pop_back();
@@ -288,7 +280,7 @@ hdf5_oarchive_impl<Archive>::end_hdf5_group()
 
 
 template<class Archive>
-BOOST_ARCHIVE_OR_WARCHIVE_DECL(BOOST_PP_EMPTY())
+BOOST_ARCHIVE_OR_WARCHIVE_DECL BOOST_PP_EMPTY()
 hdf5_oarchive_impl<Archive>::hdf5_oarchive_impl
 (
     std::string const& hdf5_filename,

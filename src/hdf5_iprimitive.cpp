@@ -23,6 +23,9 @@
 #include <boost/archive/detail/hdf5_oprimitive.hpp>
 #include <boost/archive/detail/hdf5_iprimitive.hpp>
 
+//byWarn
+#include <boost/archive/detail/common_iarchive.hpp>
+
 
 namespace boost {
 namespace archive {

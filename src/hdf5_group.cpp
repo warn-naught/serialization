@@ -14,6 +14,9 @@
 #include <boost/archive/detail/hdf5_file.hpp>
 #include <boost/archive/detail/hdf5_group.hpp>
 
+//byWarn
+#include <H5Ppublic.h>
+
 namespace boost {
 namespace archive {
 namespace detail {

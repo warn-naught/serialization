@@ -17,6 +17,9 @@
 #include <boost/archive/detail/hdf5_datatype.hpp>
 #include <boost/archive/detail/hdf5_dataspace.hpp>
 
+//byWarn
+#include <H5Ppublic.h>
+
 namespace boost {
 namespace archive {
 namespace detail {
